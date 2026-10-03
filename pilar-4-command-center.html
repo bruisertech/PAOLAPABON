@@ -129,7 +129,7 @@
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 1.25rem; margin-bottom: 1.5rem;">
           <div style="display: flex; align-items: center; gap: 1rem;">
             <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--color-accent-gold); color: #072C33; font-weight: 800; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
-              ⚡
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
             </div>
             <div>
               <div style="font-size: 0.75rem; color: var(--color-accent-gold); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">AURA Executive Assistant • Despacho Matutino</div>
@@ -137,7 +137,7 @@
             </div>
           </div>
           <div style="background: rgba(255,255,255,0.08); padding: 0.4rem 0.85rem; border-radius: 9999px; font-size: 0.78rem;">
-            📍 Sede Yumbo (Calle 5 #7-24, Puerto Isaacs)
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> Sede Yumbo (Calle 5 #7-24, Puerto Isaacs)
           </div>
         </div>
 
@@ -176,18 +176,20 @@
       <!-- BOTONES DE VISTA INTERACTIVA -->
       <div style="display: flex; gap: 0.75rem; margin-bottom: 2rem; flex-wrap: wrap;">
         <button id="tab-cronograma-btn" onclick="showDashboardTab('cronograma')" class="tab-nav-btn active">
-          📅 Cronograma Quirúrgico del Día
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 6px;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> Cronograma Quirúrgico del Día
         </button>
         <button id="tab-insumos-btn" onclick="showDashboardTab('insumos')" class="tab-nav-btn">
-          🧪 Checklist de Insumos y Farmacia
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 6px;"><path d="M9 3h6M10 9h4M10 3v6l-4 9a2 2 0 0 0 1.7 3h12.6a2 2 0 0 0 1.7-3l-4-9V3"></path></svg> Checklist de Insumos y Farmacia
         </button>
         <button id="tab-crm-btn" onclick="showDashboardTab('crm')" class="tab-nav-btn">
-          🔔 Alertas Predictivas CRM (Recompra)
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 6px;"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg> Alertas Predictivas CRM (Recompra)
         </button>
       </div>
 
       <!-- CONTENIDO 1: CRONOGRAMA CON HORAS EXACTAS Y ESPACIOS VACÍOS ASISTIDOS -->
       <div id="tab-cronograma">
+        <!-- CONTENEDOR DINÁMICO DE CITAS SINCRONIZADAS POR EL CHAT DE AURA -->
+        <div id="synced-appointments-container"></div>
         
         <!-- PACIENTE 1 -->
         <div class="schedule-item">
@@ -263,7 +265,7 @@
           <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
             <div>
               <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-                <span style="font-size: 1.2rem;">⏱️</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                 <strong style="font-size: 1.15rem; color: #92400E;">ESPACIO LIBRE ASISTIDO POR AURA: 11:30 AM a 01:00 PM (1h 30m)</strong>
                 <span class="status-badge status-free">Tiempo Libre</span>
               </div>
@@ -273,7 +275,7 @@
             </div>
             <div id="slot-1-actions" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
               <button onclick="acceptSobrecupo()" class="btn btn-gold" style="font-size: 0.8rem; padding: 0.5rem 0.85rem; cursor:pointer;">
-                ✓ Agendar Sobrecupo Sandra Morales
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><polyline points="20 6 9 17 4 12"></polyline></svg> Agendar Sobrecupo Sandra Morales
               </button>
               <button onclick="keepRest()" class="btn btn-outline" style="border-color:#92400E; color:#92400E; font-size: 0.8rem; padding: 0.5rem 0.85rem; cursor:pointer;">
                 Bloquear para Almuerzo y Descanso
@@ -333,7 +335,7 @@
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
             <div>
               <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
-                <span style="font-size: 1.2rem;">☕</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
                 <strong style="font-size: 1.1rem; color: #166534;">ESPACIO LIBRE ASISTIDO: 03:30 PM a 04:15 PM (45m)</strong>
                 <span class="status-badge" style="background:#BBF7D0; color:#166534;">Gestión y Descanso</span>
               </div>
@@ -370,7 +372,7 @@
         <!-- CIERRE OPERATIVO -->
         <div style="background: var(--color-sand); border-radius: var(--radius-md); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--color-text-muted);">
           <div><strong>05:15 PM - 05:45 PM:</strong> Cierre de cabina, reporte de consumo a farmacia y sincronización automática de consentimientos en nube.</div>
-          <span style="color:#10B981; font-weight:700;">✓ Flujo Sincronizado</span>
+          <span style="color:#10B981; font-weight:700; display:inline-flex; align-items:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><polyline points="20 6 9 17 4 12"></polyline></svg> Flujo Sincronizado</span>
         </div>
 
       </div>
@@ -384,7 +386,7 @@
               <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0.25rem 0 0;">Verificado por enfermería a las 7:00 AM bajo estricta cadena de frío.</p>
             </div>
             <button onclick="alert('Todos los insumos han sido verificados conforme a la norma de habilitación en salud.')" class="btn btn-gold" style="font-size: 0.82rem; padding: 0.5rem 1rem;">
-              ✓ Marcar Todo Verificado
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><polyline points="20 6 9 17 4 12"></polyline></svg> Marcar Todo Verificado
             </button>
           </div>
 
@@ -401,37 +403,37 @@
               <tr style="border-bottom: 1px solid #E5E7EB;">
                 <td style="padding: 0.75rem 1rem;"><strong>Sculptra® (Galderma PLLA)</strong></td>
                 <td style="padding: 0.75rem 1rem;">2 Viales</td>
-                <td style="padding: 0.75rem 1rem;"><span style="color:#10B981; font-weight:700;">● Reconstituido (24h)</span></td>
+                <td style="padding: 0.75rem 1rem;"><span style="color:#10B981; font-weight:700;"><svg width="8" height="8" viewBox="0 0 8 8" style="vertical-align: 1px; margin-right: 4px;"><circle cx="4" cy="4" r="3.5" fill="#10B981" /></svg>Reconstituido (24h)</span></td>
                 <td style="padding: 0.75rem 1rem;">Mariana Vélez (8:00 AM)</td>
               </tr>
               <tr style="border-bottom: 1px solid #E5E7EB;">
                 <td style="padding: 0.75rem 1rem;"><strong>Toxina Botulínica (Allergan)</strong></td>
                 <td style="padding: 0.75rem 1rem;">55 Unidades</td>
-                <td style="padding: 0.75rem 1rem;"><span style="color:#10B981; font-weight:700;">● Diluido en Nevera</span></td>
+                <td style="padding: 0.75rem 1rem;"><span style="color:#10B981; font-weight:700;"><svg width="8" height="8" viewBox="0 0 8 8" style="vertical-align: 1px; margin-right: 4px;"><circle cx="4" cy="4" r="3.5" fill="#10B981" /></svg>Diluido en Nevera</span></td>
                 <td style="padding: 0.75rem 1rem;">Carlos Echeverri (10:30 AM) + Beatriz Gómez (4:15 PM)</td>
               </tr>
               <tr style="border-bottom: 1px solid #E5E7EB;">
                 <td style="padding: 0.75rem 1rem;"><strong>Ácido Hialurónico Restylane Kysse</strong></td>
                 <td style="padding: 0.75rem 1rem;">1 Jeringa 1.0ml</td>
-                <td style="padding: 0.75rem 1rem;"><span style="color:#10B981; font-weight:700;">● Sellado en Cabina</span></td>
+                <td style="padding: 0.75rem 1rem;"><span style="color:#10B981; font-weight:700;"><svg width="8" height="8" viewBox="0 0 8 8" style="vertical-align: 1px; margin-right: 4px;"><circle cx="4" cy="4" r="3.5" fill="#10B981" /></svg>Sellado en Cabina</span></td>
                 <td style="padding: 0.75rem 1rem;">Valentina Rentería (9:30 AM)</td>
               </tr>
               <tr style="border-bottom: 1px solid #E5E7EB;">
                 <td style="padding: 0.75rem 1rem;"><strong>Radiesse® CaHA 1.5cc</strong></td>
                 <td style="padding: 0.75rem 1rem;">1 Jeringa precargada</td>
-                <td style="padding: 0.75rem 1rem;"><span style="color:#10B981; font-weight:700;">● Sellado en Cabina</span></td>
+                <td style="padding: 0.75rem 1rem;"><span style="color:#10B981; font-weight:700;"><svg width="8" height="8" viewBox="0 0 8 8" style="vertical-align: 1px; margin-right: 4px;"><circle cx="4" cy="4" r="3.5" fill="#10B981" /></svg>Sellado en Cabina</span></td>
                 <td style="padding: 0.75rem 1rem;">Dra. Claudia Lozano (1:00 PM)</td>
               </tr>
               <tr style="border-bottom: 1px solid #E5E7EB;">
                 <td style="padding: 0.75rem 1rem;"><strong>NCTF 135HA Fillmed</strong></td>
                 <td style="padding: 0.75rem 1rem;">1 Ampolla 3.0ml</td>
-                <td style="padding: 0.75rem 1rem;"><span style="color:#10B981; font-weight:700;">● Lista con Dermapen</span></td>
+                <td style="padding: 0.75rem 1rem;"><span style="color:#10B981; font-weight:700;"><svg width="8" height="8" viewBox="0 0 8 8" style="vertical-align: 1px; margin-right: 4px;"><circle cx="4" cy="4" r="3.5" fill="#10B981" /></svg>Lista con Dermapen</span></td>
                 <td style="padding: 0.75rem 1rem;">Sofía Cadavid (2:30 PM)</td>
               </tr>
               <tr>
                 <td style="padding: 0.75rem 1rem;"><strong>Cánulas 22G y 25G / Agujas 31G</strong></td>
                 <td style="padding: 0.75rem 1rem;">Pack de 6 unidades</td>
-                <td style="padding: 0.75rem 1rem;"><span style="color:#10B981; font-weight:700;">● Esterilizado</span></td>
+                <td style="padding: 0.75rem 1rem;"><span style="color:#10B981; font-weight:700;"><svg width="8" height="8" viewBox="0 0 8 8" style="vertical-align: 1px; margin-right: 4px;"><circle cx="4" cy="4" r="3.5" fill="#10B981" /></svg>Esterilizado</span></td>
                 <td style="padding: 0.75rem 1rem;">Insumos generales del día</td>
               </tr>
             </tbody>
@@ -450,14 +452,14 @@
               <div style="font-size: 0.72rem; color: var(--color-accent-gold); font-weight: 800;">CICLO MES 4 • TOXINA BOTULÍNICA</div>
               <strong style="display:block; margin: 0.25rem 0; font-size: 1rem;">Lucía Fernández (34 años)</strong>
               <div style="font-size: 0.8rem; color: #4B5563; margin-bottom: 0.75rem;">Último Botox: 3 de Junio 2026. Fuerza muscular comenzando a reaparecer.</div>
-              <span class="status-badge status-confirmed">✓ AURA envió WhatsApp (Respondió)</span>
+              <span class="status-badge status-confirmed" style="display:inline-flex; align-items:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><polyline points="20 6 9 17 4 12"></polyline></svg> AURA envió WhatsApp (Respondió)</span>
             </div>
 
             <div style="background: var(--color-sand); padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--color-primary);">
               <div style="font-size: 0.72rem; color: var(--color-primary); font-weight: 800;">CICLO MES 11 • ÁCIDO HIALURÓNICO</div>
               <strong style="display:block; margin: 0.25rem 0; font-size: 1rem;">Marcela Ríos (40 años)</strong>
               <div style="font-size: 0.8rem; color: #4B5563; margin-bottom: 0.75rem;">Última Armonización Labial: Noviembre 2025. Tiempo óptimo para mantenimiento.</div>
-              <span class="status-badge status-confirmed">✓ Agendada para el Martes</span>
+              <span class="status-badge status-confirmed" style="display:inline-flex; align-items:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><polyline points="20 6 9 17 4 12"></polyline></svg> Agendada para el Martes</span>
             </div>
 
             <div style="background: var(--color-sand); padding: 1.25rem; border-radius: 8px; border-left: 4px solid #10B981;">
@@ -602,7 +604,7 @@
     function keepRest() {
       var slot = document.getElementById('free-slot-1');
       slot.innerHTML = '<div style="background:#F8FAFA; border:1px solid var(--color-border-subtle); border-radius:8px; padding:1.25rem; text-align:center; color:var(--color-primary);">' +
-        '<strong>✓ Espacio Bloqueado Exclusivamente para Almuerzo y Descanso de la Dra. Paola (11:30 AM a 01:00 PM)</strong>' +
+        '<strong><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:middle; margin-right:4px;"><polyline points="20 6 9 17 4 12"></polyline></svg> Espacio Bloqueado Exclusivamente para Almuerzo y Descanso de la Dra. Paola (11:30 AM a 01:00 PM)</strong>' +
         '<div style="font-size:0.82rem; color:var(--color-text-muted); margin-top:0.25rem;">Sandra Morales fue reasignada para valoración el próximo Martes a primera hora.</div>' +
         '</div>';
     }
@@ -614,7 +616,7 @@
       btn.style.opacity = "0.7";
 
       setTimeout(function() {
-        btn.innerText = "✓ Ficha Digitalizada Exitosamente";
+        btn.innerHTML = "<svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' style='vertical-align:middle; margin-right:4px;'><polyline points='20 6 9 17 4 12'></polyline></svg> Ficha Digitalizada Exitosamente";
         btn.style.background = "#10B981";
         btn.style.opacity = "1";
 
@@ -627,6 +629,60 @@
           "• <strong>Acción Automatizada:</strong> Mensaje cordial de WhatsApp enviado para agendar valoración en Sede Yumbo.";
       }, 900);
     }
+  
+    function loadSyncedAuraAppointments() {
+      const container = document.getElementById('synced-appointments-container');
+      if (!container) return;
+      
+      const saved = localStorage.getItem('aura_clinical_appointments');
+      if (!saved) return;
+      
+      try {
+        const list = JSON.parse(saved);
+        if (!Array.isArray(list) || list.length === 0) return;
+        
+        let html = '';
+        list.forEach(function(apt) {
+          html += '<div class="schedule-item" style="border: 2px solid var(--color-accent-gold); background: #FCFAF7; box-shadow: 0 4px 20px rgba(197, 168, 128, 0.2); margin-bottom: 1.25rem; border-radius: var(--radius-sm);">' +
+            '<div>' +
+              '<div class="schedule-time" style="color: var(--color-accent-gold); font-weight: 800;">' + (apt.time || '10:30 AM') + '</div>' +
+              '<div style="font-size: 0.75rem; color: var(--color-text-muted);">Registrada ' + (apt.timestamp || 'Reciente') + '</div>' +
+            '</div>' +
+            '<div>' +
+              '<div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem; flex-wrap: wrap;">' +
+                '<strong style="font-size: 1.15rem; color: var(--color-primary);">' + apt.name + '</strong>' +
+                '<span style="font-size: 0.75rem; color: #1E293B; background: #E2E8F0; padding: 0.15rem 0.5rem; border-radius: 4px; font-weight: 700;">C.C. ' + (apt.cedula || 'Pendiente') + '</span>' +
+                '<span style="font-size: 0.75rem; color: var(--color-accent-gold); font-weight: 700;">(Código: ' + (apt.code || 'PP-2026') + ')</span>' +
+              '</div>' +
+              '<div style="font-size: 0.92rem; font-weight: 600; color: var(--color-text-dark); margin-bottom: 0.5rem;">' +
+                'Tratamiento: ' + (apt.treatment || 'Bioestimulación Dérmica') +
+              '</div>' +
+              '<div style="font-size: 0.82rem; color: #4B5563; background: #FAF7F2; padding: 0.6rem 0.85rem; border-radius: 6px; border: 1px solid var(--color-border-subtle);">' +
+                '<strong>Insumos Apartados en Farmacia:</strong> Insumos clínicos para ' + (apt.treatment || 'Procedimiento') + ' apartados y esterilizados en Cabina 1. Cita sincronizada automáticamente desde el Agente AURA.' +
+              '</div>' +
+            '</div>' +
+            '<div style="text-align: right;">' +
+              '<span class="status-badge status-confirmed" style="background:#ECFDF5; color:#065F46; border:1px solid #10B981; display:inline-flex; align-items:center; gap:4px;">' +
+                '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>' +
+                'Sincronizada por AURA' +
+              '</span>' +
+            '</div>' +
+          '</div>';
+        });
+        container.innerHTML = html;
+        
+        const kpiEl = document.getElementById('kpi-citas-count');
+        if (kpiEl) {
+          kpiEl.innerHTML = (8 + list.length) + ' / 8 <span style="font-size: 0.95rem; color: #10B981; font-weight: 700;">(+' + list.length + ' AURA)</span>';
+        }
+      } catch(e) {
+        console.error('Error loading synced appointments:', e);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadSyncedAuraAppointments);
+    setTimeout(loadSyncedAuraAppointments, 100);
+
   </script>
 </body>
 </html>
