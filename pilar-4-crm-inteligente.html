@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pilar 4: Command Center & CRM Predictivo | IPS Paola Pabón</title>
+  <meta name="description" content="Command Center y CRM Predictivo para la IPS Paola Pabón en Yumbo.">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+  <!-- NAVBAR COMÚN -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="navbar-brand">
+        <img src="assets/images/paolapabon.png" alt="IPS Paola Pabón Logo">
+        <div class="brand-text">
+          <span class="brand-title">PAOLA PABÓN</span>
+          <span class="brand-subtitle">ESTÉTICA Y SPA • YUMBO</span>
+        </div>
+      </a>
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir Menú">☰</button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html" class="nav-link">Inicio</a></li>
+        <li><a href="pilar-1-agente-ia.html" class="nav-link">1. Agente IA</a></li>
+        <li><a href="pilar-2-portal-web.html" class="nav-link">2. Portal Web</a></li>
+        <li><a href="pilar-3-experiencia-cabina.html" class="nav-link">3. En Cabina</a></li>
+        <li><a href="pilar-4-crm-inteligente.html" class="nav-link active">4. CRM & Datos</a></li>
+        <li><a href="propuesta-economica.html" class="btn btn-primary">Ver Opciones de Inversión</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <div class="container page-header">
+      <span class="badge-pill">PILAR 4: OPERACIÓN INTEGRAL Y FIDELIZACIÓN</span>
+      <h1 class="page-title">Command Center & <span class="text-gold">CRM Predictivo</span></h1>
+      <p class="page-subtitle">
+        Monitorización operativa en tiempo real, gestión de cabinas de tratamiento y sistema automatizado de recompra según el ciclo biológico del paciente.
+      </p>
+    </div>
+
+    <!-- COMMAND CENTER STATUS BAR -->
+    <section class="section container">
+      <div class="status-bar">
+        <div class="flex items-center gap-2">
+          <span class="pulse-dot"></span>
+          <span id="statusIndicatorText" style="font-weight: 700; font-size: 0.95rem; color: var(--color-gold-light);">
+            COMMAND CENTER CONECTADO • Sede Yumbo
+          </span>
+        </div>
+        <button class="btn btn-secondary" id="statusToggleBtn" style="font-size: 0.8rem; padding: 0.4rem 0.9rem;">
+          Modo Manual
+        </button>
+      </div>
+
+      <!-- 3 TARJETAS GRANDES DE MÉTRICAS (BLANCAS CON TEXTO ALTO CONTRASTE) -->
+      <div class="grid-3 mb-4">
+        <!-- Metric 1 -->
+        <div class="card-white border-gold text-center">
+          <span class="badge-pill mb-2">OCUPACIÓN DE SEDE</span>
+          <h2 style="font-size: 3rem; color: var(--color-bg-main); font-weight: 800; line-height: 1;">8 / 8</h2>
+          <p class="text-muted mt-2" style="font-weight: 700;">Cabinas Programadas Hoy (100% Lleno)</p>
+          <span style="font-size: 0.8rem; color: #059669; font-weight: 600;"> Sede Yumbo con agenda completa</span>
+        </div>
+
+        <!-- Metric 2 -->
+        <div class="card-white border-coral text-center">
+          <span class="badge-pill badge-coral mb-2">RECOMPRA BIOLÓGICA</span>
+          <h2 style="font-size: 3rem; color: var(--color-coral); font-weight: 800; line-height: 1;">12</h2>
+          <p class="text-muted mt-2" style="font-weight: 700;">Alertas de Retoque Listas Hoy</p>
+          <span style="font-size: 0.8rem; color: var(--color-coral); font-weight: 600;"> Botox (Mes 4) / Sculptra® (Mes 11)</span>
+        </div>
+
+        <!-- Metric 3 -->
+        <div class="card-white border-amber text-center">
+          <span class="badge-pill badge-amber mb-2">EFECTIVIDAD AURA-AI</span>
+          <h2 style="font-size: 3rem; color: var(--color-amber); font-weight: 800; line-height: 1;">94%</h2>
+          <p class="text-muted mt-2" style="font-weight: 700;">Respuestas Automatizadas sin Fricción</p>
+          <span style="font-size: 0.8rem; color: #D97706; font-weight: 600;"> Calificación inmediata en WhatsApp</span>
+        </div>
+      </div>
+
+      <!-- PESTAÑAS INTERACTIVAS FUNCIONALES -->
+      <div class="card-dark">
+        <div class="tab-nav">
+          <button class="tab-btn active" data-tab="tabBriefing">Briefing Diario de Gemini AI</button>
+          <button class="tab-btn" data-tab="tabCabinas">Cabinas en Vivo (Sede Yumbo)</button>
+          <button class="tab-btn" data-tab="tabRecompra">CRM Recompra Automatizada</button>
+        </div>
+
+        <!-- TAB 1: BRIEFING DIARIO -->
+        <div class="tab-content active" id="tabBriefing">
+          <div class="flex justify-between items-center mb-3">
+            <h3 class="text-gold">Resumen Matutino Automático para la Dra. Paola</h3>
+            <span style="font-size: 0.8rem; color: var(--color-gold-light);">Generado hoy 07:00 AM por Gemini AI</span>
+          </div>
+          <div style="background: rgba(0, 0, 0, 0.25); padding: 1.25rem; border-radius: var(--radius-md); border-left: 3px solid var(--color-gold);">
+            <p class="mb-2"><strong> Estimada Dra. Paola:</strong></p>
+            <p class="mb-2">Para el día de hoy en la sede Yumbo contamos con 8 procedimientos agendados:</p>
+            <ul style="padding-left: 1.2rem; line-height: 1.8;" class="mb-3">
+              <li><strong>09:00 AM:</strong> Sculptra® - Paciente recurrente (Sesión 2/3). Insumos verificados.</li>
+              <li><strong>11:30 AM:</strong> Toxina Botulínica & Baby Botox - Paciente captada por AURA-AI desde campaña Meta.</li>
+              <li><strong>02:30 PM:</strong> Labios Party & Hidratación Profunda con Ácido Hialurónico.</li>
+              <li><strong>04:30 PM:</strong> Valoración Presencial con Simulador iPad Pro (Consulta de Alto Ticket).</li>
+            </ul>
+            <p style="font-size: 0.85rem; color: var(--color-gold-light);">
+              * Tip del día: 3 de los pacientes agendados hoy respondieron positivamente al recordatorio del CRM enviando su confirmación por WhatsApp.
+            </p>
+          </div>
+        </div>
+
+        <!-- TAB 2: CABINAS EN VIVO -->
+        <div class="tab-content" id="tabCabinas">
+          <h3 class="text-gold mb-3">Programación en Tiempo Real de las 4 Cabinas de la Sede Yumbo</h3>
+          <div class="grid-2">
+            <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: var(--radius-md); border: 1px solid rgba(255, 255, 255, 0.1);">
+              <div class="flex justify-between items-center mb-1">
+                <strong>Cabina 1 - Armonización Facial</strong>
+                <span class="badge-pill" style="margin: 0; font-size: 0.65rem;">OCUPADA</span>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--color-text-light-secondary);">Procedimiento: Sculptra® (Aplicación en curso)</p>
+            </div>
+
+            <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: var(--radius-md); border: 1px solid rgba(255, 255, 255, 0.1);">
+              <div class="flex justify-between items-center mb-1">
+                <strong>Cabina 2 - Inyectables & Botox</strong>
+                <span class="badge-pill badge-amber" style="margin: 0; font-size: 0.65rem;">PREPARACIÓN</span>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--color-text-light-secondary);">Procedimiento: Toxina Botulínica (Anestesia tópica aplicada)</p>
+            </div>
+
+            <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: var(--radius-md); border: 1px solid rgba(255, 255, 255, 0.1);">
+              <div class="flex justify-between items-center mb-1">
+                <strong>Cabina 3 - Faciales & NCTF</strong>
+                <span class="badge-pill" style="margin: 0; font-size: 0.65rem;">OCUPADA</span>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--color-text-light-secondary);">Procedimiento: Protocolo Casmara + Nutrición Celular</p>
+            </div>
+
+            <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: var(--radius-md); border: 1px solid rgba(255, 255, 255, 0.1);">
+              <div class="flex justify-between items-center mb-1">
+                <strong>Cabina 4 - Valoración Digital (iPad Mirror)</strong>
+                <span class="badge-pill badge-coral" style="margin: 0; font-size: 0.65rem;">DISPONIBLE EN 15 MIN</span>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--color-text-light-secondary);">Próxima Cita: Diagnóstico Facial Armónico</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: CRM RECOMPRA AUTOMATIZADA -->
+        <div class="tab-content" id="tabRecompra">
+          <h3 class="text-gold mb-2">CRM de Recompra Basado en el Ciclo Biológico del Paciente</h3>
+          <p class="mb-3 text-muted-light" style="font-size: 0.9rem;">
+            El sistema calcula automáticamente el momento óptimo en que los activos inyectables comienzan a metabolizarse y programa notificaciones cordiales por WhatsApp:
+          </p>
+
+          <div class="flex flex-col gap-2">
+            <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+              <div>
+                <strong>Toxina Botulínica (Mes 4)</strong>
+                <p style="font-size: 0.8rem; color: var(--color-text-light-secondary);">Notificación automática: «Hola [Nombre], han transcurrido 4 meses desde tu armonización. Es hora de agendar tu mantenimiento de frescura...»</p>
+              </div>
+              <span class="badge-pill badge-amber" style="margin: 0;">8 Pacientes Notificados Hoy</span>
+            </div>
+
+            <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+              <div>
+                <strong>Sculptra® / Radiesse® (Mes 11)</strong>
+                <p style="font-size: 0.8rem; color: var(--color-text-light-secondary);">Notificación automática: «Hola [Nombre], para mantener la estimulación óptima de colágeno en tu piel, la Dra. Paola sugiere la sesión anual de refuerzo...»</p>
+              </div>
+              <span class="badge-pill" style="margin: 0;">4 Pacientes Notificados Hoy</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROTOCOLO POST-TRATAMIENTO 5 ESTRELLAS EN 3 PASOS -->
+    <section class="section section-dark">
+      <div class="container">
+        <div class="text-center mb-4">
+          <span class="badge-pill badge-coral">FIDELIZACIÓN & REPUTACIÓN</span>
+          <h2>Protocolo Post-Tratamiento 5 Estrellas</h2>
+          <p class="text-muted-light mt-1">Acompañamiento automatizado que deleita a los pacientes tras salir de cabina</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card-white border-gold text-center">
+            <div class="badge-pill mb-2">DÍA 1</div>
+            <h3>Cuidados Posteriores</h3>
+            <p class="text-muted mt-2">
+              Envío automático por WhatsApp de la guía digital de cuidados post-procedimiento (evitar sol, ejercicio intenso, aplicar frío local si se requiere).
+            </p>
+          </div>
+
+          <div class="card-white border-amber text-center">
+            <div class="badge-pill badge-amber mb-2">DÍA 7</div>
+            <h3>Control de Confort</h3>
+            <p class="text-muted mt-2">
+              Mensaje cálido de AURA-AI indagando sobre la evolución, confort y nivel de satisfacción de la paciente con el proceso de sanación.
+            </p>
+          </div>
+
+          <div class="card-white border-coral text-center">
+            <div class="badge-pill badge-coral mb-2">DÍA 15</div>
+            <h3>Reseña 5 Estrellas</h3>
+            <p class="text-muted mt-2">
+              Invitación automatizada para calificar la atención en la ficha oficial de Google Maps de la IPS Paola Pabón en Yumbo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER COMÚN -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo">
+        <img src="assets/images/paolapabon.png" alt="IPS Paola Pabón Logo Footer">
+      </div>
+      <address class="footer-address">
+        <strong>IPS Estética y Spa Paola Pabón S.A.S.</strong><br>
+        Calle 5 #7-24, Barrio Puerto Isaacs, Yumbo, Valle del Cauca<br>
+        Atención Médica Presencial y Valoraciones Virtuales
+      </address>
+      <div class="footer-credits">
+        <span>Propuesta de Ingeniería desarrollada por <a href="https://bruiser.tech" target="_blank" rel="noopener">Bruiser Tech (bruiser.tech)</a></span>
+        <span>Contacto WhatsApp Directo: (+57) 305 386 2774</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
