@@ -1,30 +1,40 @@
 /* ==========================================================================
-   PAOLA PABÓN IPS • MEDICINA ESTÉTICA & SPA
-   ARQUITECTURA DE 4 PILARES • BRUISER TECH
+   PAOLA PABÓN IPS • MEDICINA ESTÉTICA Y SPA DE ALTA GAMA
+   ARQUITECTURA DIGITAL Y SISTEMA DE DISEÑO • BRUISER TECH
    ========================================================================== */
 
 :root {
-  --color-primary: #072C33;        /* Deep Obsidian Teal */
-  --color-primary-light: #0D3E47;  /* Teal suave */
-  --color-accent-gold: #C5A880;    /* Champagne Gold */
-  --color-accent-gold-hover: #B5966B;
-  --color-warm-ivory: #FBF9F5;     /* Alabastro / Marfil */
-  --color-sand: #F3EFE6;           /* Arena cálida */
+  /* PALETA CORPORATIVA DE LUJO */
+  --color-petrol-dark: #032B32;     /* Petróleo Nocturno */
+  --color-primary: #054D59;          /* Azul Petróleo Profundo Oficial */
+  --color-primary-light: #0B6B7B;    /* Cerceta Luminoso */
+  --color-accent-gold: #C5A059;      /* Dorado Champagne */
+  --color-accent-gold-hover: #D8B46E;
+  --color-accent-coral: #FF4B72;     /* Acento Coral Sensorial */
+  --color-accent-amber: #FFA834;     /* Ámbar Cálido */
+  
+  --color-warm-ivory: #FBF9F5;       /* Marfil Alabastro */
+  --color-sand: #F3EFE6;             /* Arena Suave */
   --color-white: #FFFFFF;
-  --color-text-dark: #182224;      /* Carbón */
-  --color-text-muted: #5A696C;     /* Gris Muted */
-  --color-border: rgba(197, 168, 128, 0.28);
-  --color-border-subtle: rgba(7, 44, 51, 0.08);
+  --color-text-dark: #182224;        /* Carbón Profundo */
+  --color-text-muted: #5A696C;       /* Gris Clínico */
+  
+  --color-border: rgba(197, 168, 128, 0.35);
+  --color-border-subtle: rgba(7, 44, 51, 0.1);
+  --color-border-light: rgba(255, 255, 255, 0.15);
 
   --font-serif: 'Playfair Display', Georgia, serif;
-  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  --shadow-subtle: 0 10px 30px rgba(7, 44, 51, 0.04);
-  --shadow-card: 0 15px 35px rgba(7, 44, 51, 0.07);
-  --shadow-lift: 0 20px 45px rgba(7, 44, 51, 0.12);
+  --shadow-subtle: 0 8px 25px rgba(7, 44, 51, 0.05);
+  --shadow-card: 0 15px 35px rgba(7, 44, 51, 0.08);
+  --shadow-lift: 0 25px 50px rgba(7, 44, 51, 0.16);
+  --shadow-glow: 0 0 35px rgba(197, 168, 128, 0.25);
+
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 24px;
+  --radius-xl: 32px;
   --radius-full: 9999px;
 }
 
@@ -32,6 +42,11 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
@@ -43,11 +58,13 @@ body {
   overflow-x: hidden;
 }
 
+/* TIPOGRAFÍA */
 h1, h2, h3, h4, .serif {
   font-family: var(--font-serif);
   font-weight: 600;
   line-height: 1.25;
   color: var(--color-primary);
+  letter-spacing: -0.01em;
 }
 
 h1 i, h2 i, h3 i {
@@ -59,6 +76,7 @@ h1 i, h2 i, h3 i {
 p {
   color: var(--color-text-muted);
   font-size: 1rem;
+  line-height: 1.7;
 }
 
 a {
@@ -67,6 +85,7 @@ a {
   transition: all 0.25s ease;
 }
 
+/* CONTENEDOR */
 .container {
   width: 100%;
   max-width: 1240px;
@@ -76,29 +95,15 @@ a {
 
 .section {
   padding: 5rem 0;
-}
-
-.section-dark {
-  background-color: var(--color-primary);
-  color: var(--color-white);
-}
-.section-dark h1, .section-dark h2, .section-dark h3, .section-dark h4 {
-  color: var(--color-white);
-}
-.section-dark p {
-  color: rgba(255, 255, 255, 0.82);
-}
-
-.section-sand {
-  background-color: var(--color-sand);
+  position: relative;
 }
 
 /* TOP ANNOUNCEMENT BAR */
 .top-bar {
-  background-color: var(--color-primary);
+  background-color: var(--color-petrol-dark);
   color: var(--color-warm-ivory);
-  padding: 0.55rem 0;
-  font-size: 0.78rem;
+  padding: 0.6rem 0;
+  font-size: 0.76rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -112,18 +117,23 @@ a {
 }
 .top-bar a {
   color: var(--color-accent-gold);
-  font-weight: 600;
+  font-weight: 700;
+}
+.top-bar a:hover {
+  color: var(--color-accent-gold-hover);
+  text-decoration: underline;
 }
 
-/* HEADER Y NAVEGACIÓN DE 4 PILARES */
+/* NAVEGACIÓN PRINCIPAL (PETRÓLEO ELEGANTE) */
 .header-nav {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: rgba(251, 249, 245, 0.97);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--color-border-subtle);
+  background-color: rgba(5, 77, 89, 0.96);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   padding: 0.85rem 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .nav-container {
@@ -136,22 +146,24 @@ a {
   display: flex;
   align-items: center;
   gap: 0.85rem;
+  text-decoration: none;
 }
 .brand-wrapper img {
-  height: 40px;
+  height: 42px;
   width: auto;
   display: block;
   object-fit: contain;
 }
 .brand-tagline {
-  border-left: 1px solid var(--color-border);
-  padding-left: 0.75rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.25);
+  padding-left: 0.85rem;
   font-size: 0.72rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-primary);
+  color: white;
   font-weight: 700;
-  line-height: 1.2;
+  display: flex;
+  flex-direction: column;
 }
 
 .nav-menu {
@@ -162,15 +174,15 @@ a {
 }
 
 .nav-menu a {
-  font-size: 0.85rem;
+  font-size: 0.86rem;
   font-weight: 600;
-  color: var(--color-primary);
+  color: rgba(255, 255, 255, 0.88);
   letter-spacing: 0.02em;
   position: relative;
-  padding: 0.3rem 0;
+  padding: 0.35rem 0;
 }
 .nav-menu a:hover, .nav-menu a.active {
-  color: var(--color-accent-gold-hover);
+  color: var(--color-accent-amber);
 }
 .nav-menu a.active::after {
   content: '';
@@ -179,7 +191,7 @@ a {
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: var(--color-accent-gold);
+  background-color: var(--color-accent-amber);
 }
 
 /* BOTONES */
@@ -189,7 +201,7 @@ a {
   justify-content: center;
   gap: 0.5rem;
   padding: 0.75rem 1.6rem;
-  font-size: 0.86rem;
+  font-size: 0.88rem;
   font-weight: 600;
   letter-spacing: 0.03em;
   border-radius: var(--radius-full);
@@ -201,13 +213,14 @@ a {
 
 .btn-gold {
   background: var(--color-accent-gold);
-  color: var(--color-white) !important;
+  color: #072C33 !important;
+  font-weight: 700;
   box-shadow: 0 4px 15px rgba(197, 168, 128, 0.35);
 }
 .btn-gold:hover {
   background: var(--color-accent-gold-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(197, 168, 128, 0.45);
+  box-shadow: 0 6px 20px rgba(197, 168, 128, 0.45);
 }
 
 .btn-primary-dark {
@@ -222,24 +235,25 @@ a {
 .btn-outline {
   background: transparent;
   color: var(--color-primary);
-  border: 1px solid var(--color-primary);
+  border: 1.5px solid var(--color-primary);
 }
 .btn-outline:hover {
   background: var(--color-primary);
   color: var(--color-white);
 }
 
+/* ETIQUETAS Y BADGES */
 .sub-badge {
   display: inline-block;
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--color-accent-gold);
   margin-bottom: 0.75rem;
 }
 
-/* REJILLAS */
+/* REJILLAS GLOBALES */
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -253,11 +267,46 @@ a {
 }
 .grid-4 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
 }
 
-/* TARJETAS DE TRATAMIENTOS */
+/* HERO SECTION (PORTADA) */
+.hero-section {
+  padding: 4.5rem 0 3.5rem;
+  background: linear-gradient(180deg, #FBF9F5 0%, #F3EFE6 100%);
+  position: relative;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+.hero-image-wrapper {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lift);
+  border: 3px solid rgba(197, 168, 128, 0.35);
+}
+
+/* TARJETAS DE PILARES (CARD) */
+.card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-border-subtle);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: block;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lift);
+}
+
+/* CATÁLOGO DE TRATAMIENTOS */
 .treatment-card {
   background: var(--color-white);
   border-radius: var(--radius-md);
@@ -272,70 +321,94 @@ a {
   transform: translateY(-5px);
 }
 .treatment-card-img {
-  height: 200px;
+  height: 220px;
   width: 100%;
   object-fit: cover;
   display: block;
 }
 .treatment-card-body {
-  padding: 1.5rem;
+  padding: 1.75rem;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.treatment-category {
+.treatment-tag {
+  display: inline-block;
   font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-accent-gold);
-  font-weight: 700;
-  margin-bottom: 0.3rem;
-}
-.treatment-card-body h3 {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
-}
-.treatment-card-body p {
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-}
-.treatment-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px solid var(--color-border-subtle);
-  padding-top: 0.85rem;
-  font-size: 0.85rem;
-}
-.treatment-price {
-  font-weight: 700;
-  color: var(--color-primary);
+  font-weight: 800;
+  margin-bottom: 0.35rem;
 }
 
-/* MOCKUP WHATSAPP (PILAR 2) */
-.phone-mockup {
+/* PILAR 2: CHATBOT SIMULATOR */
+.chat-sim-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 3rem;
+  align-items: start;
+}
+.chat-sim-info {
+  background: var(--color-primary);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  color: white;
+  box-shadow: var(--shadow-lift);
+}
+.btn-chat-prompt {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  color: white;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-chat-prompt:hover {
+  background: rgba(197, 168, 128, 0.2);
+  border-color: var(--color-accent-gold);
+  transform: translateX(4px);
+}
+.phone-frame {
   background: #111B21;
-  border: 10px solid #232D36;
-  border-radius: 2.2rem;
+  border: 12px solid #232D36;
+  border-radius: 2.5rem;
   overflow: hidden;
   box-shadow: var(--shadow-lift);
-  max-width: 400px;
+  max-width: 420px;
   margin: 0 auto;
 }
 .phone-header {
   background: #202C33;
-  padding: 0.85rem 1rem;
+  padding: 0.9rem 1.25rem;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.85rem;
   color: #E9EDEF;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
-.chat-window {
-  height: 380px;
+.avatar-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #00A884;
+  color: white;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+}
+.phone-body {
+  height: 420px;
   overflow-y: auto;
-  padding: 1rem;
+  padding: 1.25rem;
   background-color: #0B141A;
   background-image: radial-gradient(#1B2730 1px, transparent 1px);
   background-size: 16px 16px;
@@ -344,11 +417,11 @@ a {
   gap: 0.85rem;
 }
 .bubble {
-  max-width: 82%;
-  padding: 0.7rem 0.9rem;
-  border-radius: 0.75rem;
-  font-size: 0.85rem;
-  line-height: 1.45;
+  max-width: 84%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.85rem;
+  font-size: 0.86rem;
+  line-height: 1.5;
 }
 .bubble-user {
   background: #005C4B;
@@ -361,44 +434,48 @@ a {
   color: #E9EDEF;
   align-self: flex-start;
   border-bottom-left-radius: 0.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
-.chat-input-bar {
+.phone-footer {
   background: #202C33;
-  padding: 0.65rem 0.85rem;
+  padding: 0.75rem 1rem;
   display: flex;
-  gap: 0.5rem;
+  gap: 0.6rem;
   align-items: center;
 }
-.chat-input-bar input {
+.phone-footer input {
   flex: 1;
   background: #2A3942;
   border: none;
   border-radius: var(--radius-full);
-  padding: 0.55rem 1rem;
+  padding: 0.65rem 1.15rem;
   color: white;
-  font-size: 0.85rem;
+  font-size: 0.86rem;
   outline: none;
 }
-.chat-input-bar button {
+.phone-footer button {
   background: #00A884;
   border: none;
   border-radius: 50%;
-  width: 34px;
-  height: 34px;
+  width: 38px;
+  height: 38px;
   color: white;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
+  transition: transform 0.2s;
+}
+.phone-footer button:hover {
+  transform: scale(1.05);
 }
 
-/* FOOTER */
+/* PIE DE PÁGINA CLÍNICO DE LUJO */
 .footer-luxury {
   background-color: var(--color-primary);
   color: var(--color-white);
   padding: 4.5rem 0 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 .footer-grid {
   display: grid;
@@ -412,13 +489,13 @@ a {
   margin-bottom: 1rem;
 }
 .footer-luxury p, .footer-luxury li {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.75);
-  line-height: 1.6;
+  font-size: 0.86rem;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.65;
 }
 .footer-luxury ul { list-style: none; }
-.footer-luxury ul li { margin-bottom: 0.5rem; }
-.footer-luxury a:hover { color: var(--color-accent-gold); }
+.footer-luxury ul li { margin-bottom: 0.55rem; }
+.footer-luxury a:hover { color: var(--color-accent-amber); }
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 1.5rem;
@@ -426,18 +503,183 @@ a {
   justify-content: space-between;
   align-items: center;
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.55);
   flex-wrap: wrap;
   gap: 0.75rem;
 }
 
+/* RESPONSIVE */
 @media (max-width: 950px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .grid-2 { grid-template-columns: 1fr; gap: 2.5rem; }
+  .chat-sim-wrapper { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
-  .nav-menu { gap: 0.75rem; }
+  .nav-menu { gap: 0.85rem; }
 }
 @media (max-width: 768px) {
   .nav-menu { display: none; }
   .footer-grid { grid-template-columns: 1fr; }
   .section { padding: 3.5rem 0; }
+}
+
+/* ==========================================================================
+   PILAR 3: IPAD PRO AESTHETIC MIRROR
+   ========================================================================== */
+.ipad-frame {
+  background: #111819;
+  border: 14px solid #232B2D;
+  border-radius: 2.5rem;
+  box-shadow: var(--shadow-lift);
+  overflow: hidden;
+  margin-bottom: 4rem;
+}
+.ipad-topbar {
+  background: #1A2426;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.75rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.ipad-content {
+  background: #0B1214;
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  min-height: 540px;
+}
+@media (max-width: 900px) {
+  .ipad-content { grid-template-columns: 1fr; }
+}
+.ipad-sidebar {
+  background: #121C1E;
+  padding: 2rem;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.ipad-viewport {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.app-input {
+  width: 100%;
+  background: #1A2628;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  padding: 0.6rem 0.85rem;
+  color: white;
+  font-size: 0.85rem;
+  outline: none;
+  margin-bottom: 1rem;
+}
+.phase-tab-btn {
+  padding: 0.5rem 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 9999px;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: transparent;
+  color: white;
+  transition: all 0.2s;
+}
+.phase-tab-btn.active {
+  background: var(--color-accent-gold);
+  border-color: var(--color-accent-gold);
+  color: #072C33;
+}
+.mesh-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: none;
+}
+.scanning-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #10B981;
+  box-shadow: 0 0 15px #10B981, 0 0 30px #10B981;
+  display: none;
+  animation: scanAnim 1.8s infinite ease-in-out;
+}
+@keyframes scanAnim {
+  0% { top: 0%; opacity: 0.8; }
+  50% { top: 96%; opacity: 1; }
+  100% { top: 0%; opacity: 0.8; }
+}
+
+/* ==========================================================================
+   PILAR 4: COMMAND CENTER & SCHEDULING
+   ========================================================================== */
+.schedule-item {
+  background: white;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  transition: all 0.2s ease;
+  display: grid;
+  grid-template-columns: 140px 1fr 140px;
+  gap: 1.5rem;
+  align-items: center;
+  box-shadow: var(--shadow-subtle);
+}
+@media (max-width: 800px) {
+  .schedule-item { grid-template-columns: 1fr; gap: 0.75rem; }
+}
+.schedule-item:hover {
+  box-shadow: var(--shadow-card);
+  border-color: var(--color-accent-gold);
+}
+.schedule-time {
+  font-weight: 800;
+  color: var(--color-primary);
+  font-size: 0.95rem;
+}
+.schedule-empty {
+  background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+  border: 2px dashed #F59E0B;
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.15);
+}
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+}
+.status-confirmed { background: #DCFCE7; color: #166534; }
+.status-prep { background: #FEF9C3; color: #854D0E; }
+.status-free { background: #FEF3C7; color: #92400E; }
+.tab-nav-btn {
+  padding: 0.65rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border-radius: 8px;
+  border: 1px solid var(--color-border-subtle);
+  background: white;
+  cursor: pointer;
+  color: var(--color-text-dark);
+  transition: all 0.2s;
+}
+.tab-nav-btn.active {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
 }
