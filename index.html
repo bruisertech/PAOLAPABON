@@ -3,206 +3,391 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IPS Paola Pabón x Bruiser Tech | Clínica Estética Inteligente</title>
-  <meta name="description" content="Propuesta de Ingeniería para la transformación digital de la IPS Paola Pabón en Yumbo, Valle del Cauca.">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <title>Dra. Paola Pabón | Medicina Estética & Spa de Lujo en Yumbo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/clinic-luxury.css">
 </head>
 <body>
+  
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div>
+        <span>IPS PAOLA PABÓN • SEDE YUMBO: CALLE 5 #7-24, PUERTO ISAACS</span>
+      </div>
+      <div>
+        <span>Citas Privadas: <a href="https://wa.me/573053862774?text=Hola%20Dra.%20Paola%20Pabón,%20deseo%20solicitar%20una%20cita%20de%20valoración" target="_blank">+57 305 386 2774</a></span>
+      </div>
+    </div>
+  </div>
 
-  <!-- NAVBAR COMÚN -->
-  <header class="navbar">
-    <div class="container navbar-inner">
-      <a href="index.html" class="navbar-brand">
-        <img src="assets/images/paolapabon.png" alt="IPS Paola Pabón Logo">
-        <div class="brand-text">
-          <span class="brand-title">PAOLA PABÓN</span>
-          <span class="brand-subtitle">ESTÉTICA Y SPA • YUMBO</span>
+  <!-- MAIN NAVIGATION -->
+  <header class="header-nav">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-wrapper">
+        <img src="assets/images/paola-pabon-solo-logo.png" alt="Dra. Paola Pabón">
+        <div class="brand-tagline">
+          <div>DRA. PAOLA PABÓN</div>
+          <div style="font-size: 0.65rem; color: var(--color-accent-gold); font-weight: 600;">MEDICINA ESTÉTICA & SPA</div>
         </div>
       </a>
 
-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir Menú">☰</button>
-
-      <ul class="nav-menu" id="navMenu">
-        <li><a href="index.html" class="nav-link active">Inicio</a></li>
-        <li><a href="pilar-1-agente-ia.html" class="nav-link">1. Agente IA</a></li>
-        <li><a href="pilar-2-portal-web.html" class="nav-link">2. Portal Web</a></li>
-        <li><a href="pilar-3-experiencia-cabina.html" class="nav-link">3. En Cabina</a></li>
-        <li><a href="pilar-4-crm-inteligente.html" class="nav-link">4. CRM & Datos</a></li>
-        <li><a href="propuesta-economica.html" class="btn btn-primary">Ver Opciones de Inversión</a></li>
-      </ul>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="active">Inicio</a></li>
+          <li><a href="tratamientos.html" >Tratamientos</a></li>
+          <li><a href="diagnostico-facial.html" >Diagnóstico Facial</a></li>
+          <li><a href="experiencia-cabina.html" >Tecnología en Cabina</a></li>
+          <li><a href="propuesta-bruisertech.html" class="nav-dossier-link">Dossier Bruiser Tech ↗</a></li>
+          <li><a href="https://wa.me/573053862774?text=Hola%20Dra.%20Paola,%20deseo%20agendar%20una%20valoración" target="_blank" class="btn btn-gold" style="padding: 0.6rem 1.4rem; font-size: 0.85rem;">Agendar Cita</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
-  <main>
-    <!-- HERO PRINCIPAL EN 2 COLUMNAS -->
-    <section class="section hero">
-      <div class="container grid-2">
+
+  <!-- HERO SECTION -->
+  <section class="section" style="padding: 5rem 0 6rem; background: linear-gradient(180deg, #FBF9F5 0%, #F5F0E6 100%); position: relative; overflow: hidden;">
+    <div class="container">
+      <div class="grid-2">
         <div>
-          <div class="badge-pill">
-            <span class="pulse-dot"></span>
-            ARQUITECTURA DIGITAL PROPIETARIA • BRUISER TECH x GOOGLE AI
-          </div>
-          <h1>Transformando la IPS Paola Pabón en una <span class="text-gold">Clínica Estética Inteligente</span></h1>
-          <p class="mt-2 text-muted-light" style="font-size: 1.1rem;">
-            Un sistema tecnológico integral que automatiza la atención 24/7, eleva la experiencia del paciente en cabina y garantiza la sostenibilidad y eficiencia clínica en Yumbo.
+          <span class="sub-badge">MEDICINA ESTÉTICA DE PRECISIÓN • YUMBO & CALI</span>
+          <h1 style="font-size: clamp(2.4rem, 4.5vw, 3.8rem); margin-bottom: 1.5rem; line-height: 1.15;">
+            El arte de la armonización facial donde la ciencia se une a tu <i>belleza natural</i>.
+          </h1>
+          <p style="font-size: 1.15rem; line-height: 1.7; margin-bottom: 2.25rem; max-width: 540px;">
+            Protocolos médicos antienvejecimiento, bioestimulación de colágeno y embellecimiento sutil liderados por la Dra. Paola Pabón. Resultados auténticos, seguros y biológicamente compatibles.
           </p>
-          <div class="hero-quote">
-            «No se trata de cambiarte, sino de armonizarte»
-          </div>
-          <div class="flex gap-2 mt-3" style="flex-wrap: wrap;">
-            <a href="#pilares" class="btn btn-primary">Explorar los 4 Pilares ➔</a>
-            <a href="propuesta-economica.html" class="btn btn-secondary">Ver Opciones de Inversión</a>
-          </div>
-        </div>
 
-        <div class="hero-image-wrapper">
-          <div class="hero-image-placeholder">
-            <div class="hero-badge-overlay">SEDE YUMBO • ENTORNO DE LUJO</div>
-            <h3 style="color: white; margin-bottom: 0.5rem;">Infraestructura de Clase Mundial</h3>
-            <p style="color: rgba(255, 255, 255, 0.85); font-size: 0.9rem;">
-              Tecnología de precisión médica diseñada para la Dra. Paola Andrea Pabón y su equipo especializado.
-            </p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem;">
+            <a href="https://wa.me/573053862774?text=Hola%20Dra.%20Paola%20Pabón,%20deseo%20agendar%20una%20valoración%20médica" target="_blank" class="btn btn-gold">
+              Agendar Valoración Médica ➔
+            </a>
+            <a href="diagnostico-facial.html" class="btn btn-outline">
+              Diagnóstico Virtual de Piel
+            </a>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- CARTA EJECUTIVA DE BRUISER TECH -->
-    <section class="section section-dark executive-letter">
-      <div class="container">
-        <div class="card-dark">
-          <div class="letter-header">
+          <!-- TRUST SIGNALS -->
+          <div style="display: flex; gap: 2rem; border-top: 1px solid var(--color-border); padding-top: 1.75rem; flex-wrap: wrap;">
             <div>
-              <span class="badge-pill badge-amber">CARTA EJECUTIVA DE INGENIERÍA</span>
-              <h2 style="color: var(--color-gold-light);">Dirigida a la Dra. Paola Andrea Pabón & Dirección General</h2>
+              <div style="font-family: var(--font-serif); font-size: 1.8rem; font-weight: 700; color: var(--color-primary);">+2,500</div>
+              <div style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-muted);">Tratamientos Exitosos</div>
             </div>
-            <img src="assets/images/paola-pabon-solo-logo.png" alt="Isotipo Paola Pabón" style="max-height: 50px; opacity: 0.8;">
+            <div>
+              <div style="font-family: var(--font-serif); font-size: 1.8rem; font-weight: 700; color: var(--color-primary);">100%</div>
+              <div style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-muted);">Insumos INVIMA Originales</div>
+            </div>
+            <div>
+              <div style="font-family: var(--font-serif); font-size: 1.8rem; font-weight: 700; color: var(--color-primary);">5.0 ★</div>
+              <div style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-muted);">Calificación de Pacientes</div>
+            </div>
           </div>
-          <div class="letter-content">
-            <p class="mb-3">
-              Estimada Dra. Paola y equipo directivo de la IPS Estética y Spa Paola Pabón:
-            </p>
-            <p class="mb-3">
-              Reconociendo su indiscutible liderazgo médico y reputación de excelencia en Yumbo, Valle del Cauca, desde <strong>Bruiser Tech</strong> hemos diseñado esta arquitectura tecnológica a medida. Nuestro objetivo es sincronizar el prestigio de sus instalaciones físicas con una presencia digital interactiva, automatizada e inteligente.
-            </p>
-            <p>
-              La implementación de esta propuesta no solo elimina cuellos de botella operativos en la captación de pacientes, sino que institucionaliza la filosofía de cuidado médico personalizado («No se trata de cambiarte, sino de armonizarte»), asegurando la máxima Sostenibilidad y Eficiencia Clínica de su IPS.
-            </p>
+        </div>
+
+        <!-- HERO IMAGE COMPOSITION -->
+        <div style="position: relative;">
+          <div style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lift); border: 8px solid var(--color-white);">
+            <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80" alt="Consulta médica estética Dra. Paola Pabón" style="width: 100%; height: 500px; object-fit: cover; display: block;">
+          </div>
+          <!-- FLOATING ELEGANT BADGE -->
+          <div style="position: absolute; bottom: -20px; left: -20px; background: var(--color-white); padding: 1.25rem 1.75rem; border-radius: var(--radius-md); box-shadow: var(--shadow-lift); border: 1px solid var(--color-border-subtle); max-width: 260px;">
+            <div style="color: var(--color-accent-gold); font-size: 1.2rem; margin-bottom: 0.25rem;">✨</div>
+            <div style="font-family: var(--font-serif); font-size: 1.05rem; font-weight: 700; color: var(--color-primary);">«Armonizarte, no cambiarte»</div>
+            <div style="font-size: 0.75rem; color: var(--color-text-muted); margin-top: 0.25rem;">Filosofía médica distintiva en cada procedimiento.</div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- DIAGNÓSTICO: 3 CUELLOS DE BOTELLA ACTUALES -->
-    <section class="section container">
-      <div class="text-center mb-4">
-        <span class="badge-pill badge-coral">DIAGNÓSTICO OPERATIVO</span>
-        <h2>3 Cuellos de Botella Actuales en la Captación</h2>
-        <p class="text-muted-light mt-1">Identificación de puntos de fricción comunes en clínicas estéticas en crecimiento</p>
+  <!-- FILOSOFÍA MÉDICA (3 PILARES CLÍNICOS) -->
+  <section id="filosofia" class="section">
+    <div class="container">
+      <div style="text-align: center; max-width: 750px; margin: 0 auto 4rem;">
+        <span class="sub-badge">NUESTRA PROMESA CLÍNICA</span>
+        <h2 style="font-size: clamp(2rem, 3.5vw, 2.8rem); margin-bottom: 1.25rem;">
+          Resultados que no se notan al ojo ajeno, <i>pero transforman tu confianza</i>.
+        </h2>
+        <p style="font-size: 1.05rem;">
+          En la IPS Paola Pabón entendemos que el rostro es el reflejo de tu identidad. Por eso rechazamos las exageraciones y priorizamos la elegancia de las proporciones anatómicas.
+        </p>
       </div>
 
       <div class="grid-3">
-        <!-- Tarjeta 1 -->
-        <div class="card-white border-coral">
-          <div class="badge-pill badge-coral mb-2">FUGA DE PROSPECTOS</div>
-          <h3>Fuga en DMs y WhatsApp</h3>
-          <p class="mt-2 text-muted">
-            Las demoras de +45 minutos en responder inquietudes en campañas publicitarias o fuera del horario comercial enfrían el interés de los pacientes y los desplazan hacia competidores.
+        <div style="background: var(--color-white); padding: 2.5rem; border-radius: var(--radius-md); border-top: 3px solid var(--color-accent-gold); box-shadow: var(--shadow-subtle);">
+          <div style="font-size: 2rem; margin-bottom: 1rem; color: var(--color-accent-gold);">01</div>
+          <h3 style="font-size: 1.35rem; margin-bottom: 0.75rem;">Naturalidad Absoluta</h3>
+          <p>
+            Aplicamos micro-dosis estratégicas basadas en las proporciones áureas faciales. El objetivo es que luzcas fresca, descansada y radiante, jamás operada ni sobrecargada.
           </p>
         </div>
 
-        <!-- Tarjeta 2 -->
-        <div class="card-white border-amber">
-          <div class="badge-pill badge-amber mb-2">INSEGURIDAD EN VALORACIÓN</div>
-          <h3>Miedo a Perder Naturalidad</h3>
-          <p class="mt-2 text-muted">
-            El temor de las pacientes a un resultado artificial con inyectables frena la toma de decisiones. Falta un diagnóstico visual previo que genere confianza inmediata.
+        <div style="background: var(--color-white); padding: 2.5rem; border-radius: var(--radius-md); border-top: 3px solid var(--color-primary); box-shadow: var(--shadow-subtle);">
+          <div style="font-size: 2rem; margin-bottom: 1rem; color: var(--color-primary);">02</div>
+          <h3 style="font-size: 1.35rem; margin-bottom: 0.75rem;">Seguridad Farmacológica</h3>
+          <p>
+            Utilizamos exclusivamente viales cerrados de laboratorios líderes mundiales (Galderma, Merz, Allergan). Trazabilidad total con registro INVIMA y cadena de frío garantizada.
           </p>
         </div>
 
-        <!-- Tarjeta 3 -->
-        <div class="card-white border-petroleum">
-          <div class="badge-pill mb-2">DESCONEXIÓN EN RECOMPRA</div>
-          <h3>Sin Seguimiento de Retoque</h3>
-          <p class="mt-2 text-muted">
-            Inexistencia de un sistema automatizado que recuerde el retoque a los 4 u 11 meses según el ciclo biológico del tratamiento (Botox, Ácido Hialurónico, Sculptra®).
+        <div style="background: var(--color-white); padding: 2.5rem; border-radius: var(--radius-md); border-top: 3px solid var(--color-accent-gold); box-shadow: var(--shadow-subtle);">
+          <div style="font-size: 2rem; margin-bottom: 1rem; color: var(--color-accent-gold);">03</div>
+          <h3 style="font-size: 1.35rem; margin-bottom: 0.75rem;">Acompañamiento Post-Cabina</h3>
+          <p>
+            Tu tratamiento no termina al salir de consulta. Te entregamos un plan digital de cuidados en tu WhatsApp y realizamos controles médicos a las 24 horas, 7 días y 15 días.
           </p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- LOS 4 PILARES TECNOLÓGICOS EN REJILLA -->
-    <section class="section section-dark" id="pilares">
-      <div class="container">
-        <div class="text-center mb-4">
-          <span class="badge-pill">SOLUCIÓN INTEGRAL</span>
-          <h2 style="color: var(--color-white);">Los 4 Pilares de la Transformación Digital</h2>
-          <p class="text-muted-light mt-1">La propuesta técnica completa desarrollada por Bruiser Tech</p>
+  <!-- COLECCIÓN DE TRATAMIENTOS DESTACADOS -->
+  <section class="section section-sand">
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3.5rem; flex-wrap: wrap; gap: 1.5rem;">
+        <div>
+          <span class="sub-badge">MENÚ EXCLUSIVO DE PROCEDIMIENTOS</span>
+          <h2 style="font-size: clamp(2rem, 3.5vw, 2.8rem);">
+            Tratamientos Signature <i>en Cabina</i>
+          </h2>
+        </div>
+        <div>
+          <a href="tratamientos.html" class="btn btn-outline" style="border-color: var(--color-primary);">
+            Ver Menú Completo (6 Procedimientos) ➔
+          </a>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <!-- SCULPTRA -->
+        <div class="treatment-card">
+          <img src="https://images.unsplash.com/photo-1512290900672-1f41639d67b2?auto=format&fit=crop&w=600&q=80" alt="Sculptra Regeneración de Colágeno" class="treatment-card-img">
+          <div class="treatment-card-body">
+            <div>
+              <div class="treatment-category">Bioestimulación Celular</div>
+              <h3>Sculptra® Original</h3>
+              <p>Ácido Poli-L-Láctico que activa la producción natural de colágeno tipo I. Devuelve soporte, densidad dérmica y firmeza progresiva sin aportar volumen artificial.</p>
+            </div>
+            <div class="treatment-footer">
+              <span class="treatment-price">Jornada Especial: $999.000 COP</span>
+              <a href="https://wa.me/573053862774?text=Hola,%20deseo%20información%20sobre%20Sculptra" target="_blank" style="color: var(--color-accent-gold); font-weight: 700;">Consultar ➔</a>
+            </div>
+          </div>
         </div>
 
-        <div class="grid-4">
-          <!-- Pilar 1 -->
-          <div class="card-white border-gold">
-            <span class="text-gold" style="font-weight: 800; font-size: 0.85rem;">PILAR 1</span>
-            <h3 class="mt-1 mb-2">Agente IA Omnicanal 24/7</h3>
-            <p class="text-muted mb-3" style="font-size: 0.9rem;">
-              AURA-AI califica prospectos, resuelve dudas clínicas éticas y agenda citas automáticamente por WhatsApp.
-            </p>
-            <a href="pilar-1-agente-ia.html" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.5rem 1rem;">Ver Pilar 1 ➔</a>
+        <!-- BOTOX -->
+        <div class="treatment-card">
+          <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80" alt="Toxina Botulínica & Baby Botox" class="treatment-card-img">
+          <div class="treatment-card-body">
+            <div>
+              <div class="treatment-category">Prevención Dinámica</div>
+              <h3>Toxina Botulínica & Baby Botox</h3>
+              <p>Relajación selectiva y precisa de los músculos de la mímica (frente, entrecejo y patas de gallo). Suaviza arrugas existentes y previene líneas permanentes.</p>
+            </div>
+            <div class="treatment-footer">
+              <span class="treatment-price">Valoración según zonas</span>
+              <a href="https://wa.me/573053862774?text=Hola,%20deseo%20información%20sobre%20Botox" target="_blank" style="color: var(--color-accent-gold); font-weight: 700;">Consultar ➔</a>
+            </div>
           </div>
+        </div>
 
-          <!-- Pilar 2 -->
-          <div class="card-white border-gold">
-            <span class="text-gold" style="font-weight: 800; font-size: 0.85rem;">PILAR 2</span>
-            <h3 class="mt-1 mb-2">Portal Web de Captación</h3>
-            <p class="text-muted mb-3" style="font-size: 0.9rem;">
-              Portal médico optimizado con Skin Quiz interactivo de evaluación facial y catálogo de 6 procedimientos.
-            </p>
-            <a href="pilar-2-portal-web.html" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.5rem 1rem;">Ver Pilar 2 ➔</a>
-          </div>
-
-          <!-- Pilar 3 -->
-          <div class="card-white border-gold">
-            <span class="text-gold" style="font-weight: 800; font-size: 0.85rem;">PILAR 3</span>
-            <h3 class="mt-1 mb-2">Bruiser Aesthetic Mirror</h3>
-            <p class="text-muted mb-3" style="font-size: 0.9rem;">
-              Simulador en iPad para la consulta médica presencial que proyecta el resultado armónico antes de la aplicación.
-            </p>
-            <a href="pilar-3-experiencia-cabina.html" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.5rem 1rem;">Ver Pilar 3 ➔</a>
-          </div>
-
-          <!-- Pilar 4 -->
-          <div class="card-white border-gold">
-            <span class="text-gold" style="font-weight: 800; font-size: 0.85rem;">PILAR 4</span>
-            <h3 class="mt-1 mb-2">Command Center & CRM</h3>
-            <p class="text-muted mb-3" style="font-size: 0.9rem;">
-              Panel de control con Briefing diario por Gemini AI, ocupación de cabinas en vivo y alertas automáticas de recompra.
-            </p>
-            <a href="pilar-4-crm-inteligente.html" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.5rem 1rem;">Ver Pilar 4 ➔</a>
+        <!-- LABIOS PARTY -->
+        <div class="treatment-card">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80" alt="Armonización de Labios" class="treatment-card-img">
+          <div class="treatment-card-body">
+            <div>
+              <div class="treatment-category">Ácido Hialurónico Premium</div>
+              <h3>Labios Haute Couture</h3>
+              <p>Perfilado anatómico del arco de cupido, hidratación profunda y volumen sutil adaptado a la morfología de tu sonrisa. Efecto gloss natural.</p>
+            </div>
+            <div class="treatment-footer">
+              <span class="treatment-price">1 Vial Reticulado</span>
+              <a href="https://wa.me/573053862774?text=Hola,%20deseo%20información%20sobre%20Armonización%20de%20Labios" target="_blank" style="color: var(--color-accent-gold); font-weight: 700;">Consultar ➔</a>
+            </div>
           </div>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <!-- FOOTER COMÚN -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-logo">
-        <img src="assets/images/paolapabon.png" alt="IPS Paola Pabón Logo Footer">
+  <!-- TECNOLOGÍA EN CABINA: AESTHETIC MIRROR SPOTLIGHT -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="grid-2">
+        <div>
+          <span class="sub-badge" style="color: var(--color-accent-gold);">INNOVACIÓN CLÍNICA EXCLUSIVA</span>
+          <h2 style="font-size: clamp(2.2rem, 4vw, 3.2rem); margin-bottom: 1.5rem; line-height: 1.2;">
+            Visualiza tu cambio antes de aplicar <i>la primera gota</i>.
+          </h2>
+          <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.75rem;">
+            Sabemos que el mayor temor al considerar inyectables es el miedo a quedar irreconocible. En la IPS Paola Pabón incorporamos el <strong>Aesthetic Mirror</strong> en tu consulta de valoración.
+          </p>
+          <ul style="list-style: none; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+            <li style="display: flex; gap: 0.75rem; align-items: flex-start;">
+              <span style="color: var(--color-accent-gold); font-weight: 700;">✓</span>
+              <span><strong>Simulación Facial Ética:</strong> Proyección de volumen y soporte respetando tu fisionomía.</span>
+            </li>
+            <li style="display: flex; gap: 0.75rem; align-items: flex-start;">
+              <span style="color: var(--color-accent-gold); font-weight: 700;">✓</span>
+              <span><strong>Plan Estético Digital:</strong> Recibe en tu WhatsApp el informe médico con la dosis sugerida y cuidados.</span>
+            </li>
+            <li style="display: flex; gap: 0.75rem; align-items: flex-start;">
+              <span style="color: var(--color-accent-gold); font-weight: 700;">✓</span>
+              <span><strong>Cero Presión:</strong> Tienes control visual completo antes de autorizar cualquier procedimiento.</span>
+            </li>
+          </ul>
+          <a href="experiencia-cabina.html" class="btn btn-gold">
+            Conocer la Experiencia en Cabina ➔
+          </a>
+        </div>
+
+        <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.12); padding: 2rem; border-radius: var(--radius-lg); text-align: center;">
+          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=700&q=80" alt="iPad en Consulta Médica" style="width: 100%; height: 320px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: 1.25rem;">
+          <div style="font-family: var(--font-serif); font-size: 1.2rem; color: var(--color-white);">Consulta Asistida por Simulación Digital</div>
+          <div style="font-size: 0.85rem; color: rgba(255, 255, 255, 0.6); margin-top: 0.25rem;">Disponible en cada cita de valoración en la Sede Yumbo.</div>
+        </div>
       </div>
-      <address class="footer-address">
-        <strong>IPS Estética y Spa Paola Pabón S.A.S.</strong><br>
-        Calle 5 #7-24, Barrio Puerto Isaacs, Yumbo, Valle del Cauca<br>
-        Atención Médica Presencial y Valoraciones Virtuales
-      </address>
-      <div class="footer-credits">
-        <span>Propuesta de Ingeniería desarrollada por <a href="https://bruiser.tech" target="_blank" rel="noopener">Bruiser Tech (bruiser.tech)</a></span>
-        <span>Contacto WhatsApp Directo: (+57) 305 386 2774</span>
+    </div>
+  </section>
+
+  <!-- DIAGNÓSTICO VIRTUAL DE PIEL (CALL TO ACTION) -->
+  <section class="section">
+    <div class="container">
+      <div style="background: var(--color-sand); border-radius: var(--radius-lg); padding: 4.5rem 3rem; text-align: center; border: 1px solid var(--color-border); max-width: 960px; margin: 0 auto;">
+        <span class="sub-badge">AUTO-DIAGNÓSTICO EN 2 MINUTOS</span>
+        <h2 style="font-size: clamp(2rem, 3.5vw, 2.7rem); margin-bottom: 1rem;">
+          ¿No sabes qué tratamiento necesita <i>tu piel</i>?
+        </h2>
+        <p style="font-size: 1.1rem; max-width: 620px; margin: 0 auto 2.25rem;">
+          Realiza nuestro Skin Assessment guiado. En 3 sencillos pasos te indicamos el protocolo médico ideal (bioestimulador, hidratación o relajación) para preparar tu visita.
+        </p>
+        <a href="diagnostico-facial.html" class="btn btn-primary-dark" style="font-size: 1rem; padding: 1rem 2.5rem;">
+          Comenzar Diagnóstico Facial ➔
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERFIL MÉDICO: DRA. PAOLA PABÓN -->
+  <section id="doctora" class="section" style="padding-top: 2rem;">
+    <div class="container">
+      <div class="grid-2">
+        <div style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-card);">
+          <img src="https://images.unsplash.com/photo-1594824813511-6677943ad9d4?auto=format&fit=crop&w=700&q=80" alt="Dra. Paola Andrea Pabón" style="width: 100%; height: 480px; object-fit: cover; display: block;">
+        </div>
+        <div>
+          <span class="sub-badge">DIRECCIÓN MÉDICA & CIENTÍFICA</span>
+          <h2 style="font-size: clamp(2.2rem, 4vw, 3rem); margin-bottom: 1.25rem;">
+            Dra. Paola Andrea Pabón
+          </h2>
+          <h4 style="font-family: var(--font-sans); font-size: 1.05rem; color: var(--color-accent-gold); font-weight: 600; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em;">
+            Médica Estética • Especialista en Armonización Facial & Rejuvenecimiento Celular
+          </h4>
+          <p style="margin-bottom: 1.25rem; font-size: 1.02rem; line-height: 1.75;">
+            Con más de una década dedicada a la medicina del bienestar y la belleza, la Dra. Paola Pabón ha transformado la IPS en Yumbo en un referente regional de confianza, rigor científico y hospitalidad cálida.
+          </p>
+          <p style="margin-bottom: 2rem; font-size: 1.02rem; line-height: 1.75;">
+            Su práctica médica se fundamenta en el respeto riguroso por la individualidad anatómica: cada paciente recibe una consulta pausada, un diagnóstico milimétrico y la seguridad de ser atendida directamente por manos médicas calificadas.
+          </p>
+          <div class="quote-box">
+            <div class="quote-text">
+              «Mi mayor satisfacción no es cambiar la cara de alguien, sino verla sonreír frente al espejo reconociéndose con su versión más luminosa.»
+            </div>
+            <div class="quote-author">Dra. Paola Pabón — Fundadora & Directora Médica</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANNER DISCRETO DE INGENIERÍA DIGITAL (PARA LA JUNTA / PAOLA) -->
+  <section class="section" style="padding: 3rem 0; background: #EFEBE1; border-top: 1px solid var(--color-border);">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+      <div>
+        <span style="font-size: 0.72rem; letter-spacing: 0.15em; font-weight: 800; color: var(--color-primary); text-transform: uppercase;">
+          INFRAESTRUCTURA DIGITAL • BRUISER TECH
+        </span>
+        <h4 style="font-size: 1.25rem; margin-top: 0.25rem; color: var(--color-primary);">
+          ¿Deseas revisar la arquitectura tecnológica y el modelo de inversión de esta clínica?
+        </h4>
+        <p style="font-size: 0.88rem; margin: 0;">Consulta el Command Center, el agente omnicanal AURA y los planes Bruiser Care.</p>
+      </div>
+      <div>
+        <a href="propuesta-bruisertech.html" class="btn btn-outline" style="border-color: var(--color-primary); font-size: 0.85rem; padding: 0.75rem 1.5rem;">
+          Acceder al Dossier Ejecutivo ➔
+        </a>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- LUXURY FOOTER -->
+  <footer class="footer-luxury">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--color-white); margin-bottom: 0.75rem;">
+            Dra. Paola Pabón
+          </h3>
+          <p style="margin-bottom: 1.5rem; max-width: 320px;">
+            Medicina estética y armonización facial de alta precisión. Tratamientos médicos personalizados orientados a realzar tu belleza natural con total bioseguridad.
+          </p>
+          <div style="font-size: 0.82rem; color: var(--color-accent-gold);">
+            «No se trata de cambiarte, sino de armonizarte»
+          </div>
+        </div>
+
+        <div>
+          <h4>Procedimientos</h4>
+          <ul>
+            <li><a href="tratamientos.html#sculptra">Sculptra® & Colágeno</a></li>
+            <li><a href="tratamientos.html#radiesse">Radiesse® Contorno</a></li>
+            <li><a href="tratamientos.html#botox">Toxina Botulínica</a></li>
+            <li><a href="tratamientos.html#labios">Labios Haute Couture</a></li>
+            <li><a href="tratamientos.html#hilos">Hilos Tensores PDO</a></li>
+            <li><a href="tratamientos.html#casmara">Faciales Casmara</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Experiencia</h4>
+          <ul>
+            <li><a href="diagnostico-facial.html">Diagnóstico de Piel</a></li>
+            <li><a href="experiencia-cabina.html">Simulador en Cabina</a></li>
+            <li><a href="index.html#filosofia">Filosofía Médica</a></li>
+            <li><a href="index.html#doctora">Sobre la Dra. Paola</a></li>
+            <li><a href="propuesta-bruisertech.html">Dossier Tecnológico</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Ubicación & Citas</h4>
+          <p>
+            Calle 5 #7-24, Barrio Puerto Isaacs<br>
+            Yumbo, Valle del Cauca, Colombia
+          </p>
+          <p style="margin-top: 0.75rem;">
+            <strong>Atención:</strong> Lunes a Sábado con cita previa reservada.
+          </p>
+          <p style="margin-top: 0.75rem;">
+            <strong>WhatsApp VIP:</strong> <a href="https://wa.me/573053862774" style="color:var(--color-accent-gold);">+57 305 386 2774</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 IPS Paola Pabón. Todos los derechos reservados. Registro Médico & Habilitación Seccional de Salud.
+        </div>
+        <div>
+          Arquitectura digital e infraestructura clínica inteligente por <a href="https://bruiser.tech" target="_blank" style="font-weight:700;">Bruiser Tech</a>
+        </div>
       </div>
     </div>
   </footer>
 
-  <script src="assets/js/main.js"></script>
 </body>
 </html>

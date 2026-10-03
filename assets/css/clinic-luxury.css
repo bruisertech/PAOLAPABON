@@ -1,0 +1,448 @@
+/* ==========================================================================
+   PAOLA PABÓN IPS • MEDICINA ESTÉTICA & SPA DE LUJO
+   SISTEMA DE DISEÑO EDITORIAL & ARQUITECTURA DIGITAL
+   Desarrollado con Bruiser Tech (bruiser.tech)
+   ========================================================================== */
+
+:root {
+  /* PALETA EDITORIAL DE ALTA GAMA */
+  --color-primary: #072C33;        /* Deep Obsidian Teal / Petróleo Profundo */
+  --color-primary-light: #0D3E47;  /* Petróleo Suave */
+  --color-accent-gold: #C5A880;    /* Champagne Gold */
+  --color-accent-gold-hover: #B5966B;
+  --color-warm-ivory: #FBF9F5;     /* Alabastro / Marfil Cálido (Fondo Principal) */
+  --color-sand: #F3EFE6;           /* Arena Suave para Secciones */
+  --color-white: #FFFFFF;
+  --color-text-dark: #182224;      /* Carbón Suave para Lectura */
+  --color-text-muted: #5A696C;     /* Gris Muted */
+  --color-border: rgba(197, 168, 128, 0.28);
+  --color-border-subtle: rgba(7, 44, 51, 0.08);
+
+  /* TIPOGRAFÍAS */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* SOMBRAS Y BORDES */
+  --shadow-subtle: 0 10px 30px rgba(7, 44, 51, 0.04);
+  --shadow-card: 0 15px 35px rgba(7, 44, 51, 0.07);
+  --shadow-lift: 0 20px 45px rgba(7, 44, 51, 0.12);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+}
+
+/* RESET GENERAL */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--color-warm-ivory);
+  color: var(--color-text-dark);
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ENCABEZADOS Y TEXTOS */
+h1, h2, h3, h4, .serif {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--color-primary);
+}
+
+h1 i, h2 i, h3 i {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--color-accent-gold);
+}
+
+p {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+/* CONTENEDOR Y LAYOUT */
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section {
+  padding: 6rem 0;
+}
+
+.section-dark {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+.section-dark h1, .section-dark h2, .section-dark h3, .section-dark h4 {
+  color: var(--color-white);
+}
+.section-dark p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.section-sand {
+  background-color: var(--color-sand);
+}
+
+/* TOP ANNOUNCEMENT BAR */
+.top-bar {
+  background-color: var(--color-primary);
+  color: var(--color-warm-ivory);
+  padding: 0.6rem 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.top-bar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.top-bar a {
+  color: var(--color-accent-gold);
+  font-weight: 600;
+}
+.top-bar a:hover {
+  text-decoration: underline;
+}
+
+/* BARRA DE NAVEGACIÓN DE LUJO */
+.header-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(251, 249, 245, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border-subtle);
+  padding: 1rem 0;
+  transition: background 0.3s;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.brand-wrapper img {
+  height: 42px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  /* Filter to make it deep petrol on light background */
+  filter: brightness(0) saturate(100%) invert(13%) sepia(28%) saturate(1512%) hue-rotate(145deg) brightness(94%) contrast(96%);
+}
+.brand-tagline {
+  border-left: 1px solid var(--color-border);
+  padding-left: 0.85rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-menu a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  letter-spacing: 0.02em;
+  position: relative;
+  padding: 0.3rem 0;
+}
+.nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--color-accent-gold);
+  transition: width 0.25s ease;
+}
+.nav-menu a:hover::after, .nav-menu a.active::after {
+  width: 100%;
+}
+.nav-menu a.active {
+  color: var(--color-accent-gold-hover);
+  font-weight: 600;
+}
+
+.nav-dossier-link {
+  font-size: 0.78rem !important;
+  color: var(--color-text-muted) !important;
+  padding: 0.35rem 0.85rem !important;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: rgba(197, 168, 128, 0.08);
+}
+.nav-dossier-link:hover {
+  background: var(--color-accent-gold) !important;
+  color: var(--color-white) !important;
+  border-color: var(--color-accent-gold) !important;
+}
+
+/* BOTONES DE LUJO */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.btn-gold {
+  background: var(--color-accent-gold);
+  color: var(--color-white);
+  box-shadow: 0 4px 15px rgba(197, 168, 128, 0.35);
+}
+.btn-gold:hover {
+  background: var(--color-accent-gold-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(197, 168, 128, 0.45);
+}
+
+.btn-primary-dark {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+.btn-primary-dark:hover {
+  background: var(--color-primary-light);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+.btn-outline:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-outline-white {
+  background: transparent;
+  color: var(--color-white);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+.btn-outline-white:hover {
+  background: var(--color-white);
+  color: var(--color-primary);
+  border-color: var(--color-white);
+}
+
+/* ETIQUETAS SUBTILES (BADGES DISCRETAS) */
+.sub-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--color-accent-gold);
+  margin-bottom: 0.85rem;
+}
+
+/* REJILLAS */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.25rem;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+/* TARJETAS DE TRATAMIENTOS Y SERVICIOS */
+.treatment-card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-border-subtle);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+.treatment-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lift);
+}
+.treatment-card-img {
+  height: 220px;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+.treatment-card-body {
+  padding: 1.75rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.treatment-category {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent-gold);
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+.treatment-card-body h3 {
+  font-size: 1.35rem;
+  margin-bottom: 0.6rem;
+}
+.treatment-card-body p {
+  font-size: 0.92rem;
+  margin-bottom: 1.25rem;
+  color: var(--color-text-muted);
+}
+.treatment-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--color-border-subtle);
+  padding-top: 1rem;
+  font-size: 0.85rem;
+}
+.treatment-price {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* TESTIMONIOS Y CITAS */
+.quote-box {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 2.5rem;
+  border-left: 4px solid var(--color-accent-gold);
+  box-shadow: var(--shadow-subtle);
+}
+.quote-text {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--color-primary);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+.quote-author {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-accent-gold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* FOOTER EDITORIAL DE LUJO */
+.footer-luxury {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 5rem 0 2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+.footer-luxury h4 {
+  color: var(--color-white);
+  font-size: 1.15rem;
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+.footer-luxury p, .footer-luxury li {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.7;
+}
+.footer-luxury ul {
+  list-style: none;
+}
+.footer-luxury ul li {
+  margin-bottom: 0.6rem;
+}
+.footer-luxury a:hover {
+  color: var(--color-accent-gold);
+}
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.5);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-bottom a {
+  color: var(--color-accent-gold);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .grid-2 { grid-template-columns: 1fr; gap: 2.5rem; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 650px) {
+  .nav-menu { display: none; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .section { padding: 4rem 0; }
+}
