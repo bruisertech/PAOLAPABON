@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pilar 1: Agente IA Omnicanal 24/7 | IPS Paola Pabón</title>
+  <meta name="description" content="Simulador interactivo del Agente AURA-AI para la IPS Paola Pabón en Yumbo.">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+  <!-- NAVBAR COMÚN -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="navbar-brand">
+        <img src="assets/images/paolapabon.png" alt="IPS Paola Pabón Logo">
+        <div class="brand-text">
+          <span class="brand-title">PAOLA PABÓN</span>
+          <span class="brand-subtitle">ESTÉTICA Y SPA • YUMBO</span>
+        </div>
+      </a>
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir Menú">☰</button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html" class="nav-link">Inicio</a></li>
+        <li><a href="pilar-1-agente-ia.html" class="nav-link active">1. Agente IA</a></li>
+        <li><a href="pilar-2-portal-web.html" class="nav-link">2. Portal Web</a></li>
+        <li><a href="pilar-3-experiencia-cabina.html" class="nav-link">3. En Cabina</a></li>
+        <li><a href="pilar-4-crm-inteligente.html" class="nav-link">4. CRM & Datos</a></li>
+        <li><a href="propuesta-economica.html" class="btn btn-primary">Ver Opciones de Inversión</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <div class="container page-header">
+      <span class="badge-pill">PILAR 1: ATENCIÓN & CONVERSIÓN INMEDIATA 24/7</span>
+      <h1 class="page-title">Agente IA Clinico Omnicanal: <span class="text-gold">AURA-AI</span></h1>
+      <p class="page-subtitle">
+        Calificación automática de prospectos, resolución de inquietudes médicas éticas y agendamiento directo en tiempo real por WhatsApp.
+      </p>
+    </div>
+
+    <!-- SIMULADOR INTERACTIVO EN 2 COLUMNAS -->
+    <section class="section container">
+      <div class="grid-2">
+        <!-- Panel de Control e Instrucciones -->
+        <div>
+          <div class="card-dark mb-4">
+            <h3 class="mb-2 text-gold">¿Cómo opera AURA-AI?</h3>
+            <p class="text-muted-light mb-3">
+              AURA-AI está entrenada específicamente con los protocolos médicos de la Dra. Paola Pabón. Responde con calidez humana, empatía y rigor profesional las 24 horas del día.
+            </p>
+            <ul style="padding-left: 1.2rem; color: var(--color-text-light-secondary);" class="flex flex-col gap-2">
+              <li><strong>Triaje Clínico:</strong> Filtra prospectos interesados en tratamientos de alto valor.</li>
+              <li><strong>Manejo Ético de Objeciones:</strong> Resuelve temores sobre dolor, agujas y tiempos de recuperación.</li>
+              <li><strong>Ubicación y Logística:</strong> Proporciona instrucciones precisas de llegada a la sede Yumbo.</li>
+            </ul>
+          </div>
+
+          <div class="card-white border-gold">
+            <h4 class="mb-2 text-petroleum">Prueba el Simulador con estos Escenarios:</h4>
+            <p class="text-muted mb-3" style="font-size: 0.9rem;">Haz clic en cualquiera de los botones para ver cómo respondería AURA-AI a una paciente real:</p>
+
+            <div class="flex flex-col gap-2">
+              <button class="btn btn-secondary scenario-btn" style="background: #F1F5F9; color: #0F172A; text-align: left; justify-content: flex-start;" data-scenario="Consulta por Sculptra® y la jornada especial en Yumbo">
+                1. Consulta de Alto Ticket (Sculptra® y Jornada Especial)
+              </button>
+              <button class="btn btn-secondary scenario-btn" style="background: #F1F5F9; color: #0F172A; text-align: left; justify-content: flex-start;" data-scenario="¿Dónde están ubicados exactamente en Yumbo y cuáles son sus horarios?">
+                2. Horarios y Ubicación en Yumbo
+              </button>
+              <button class="btn btn-secondary scenario-btn" style="background: #F1F5F9; color: #0F172A; text-align: left; justify-content: flex-start;" data-scenario="Tengo mucho miedo a las agujas y al dolor, ¿duele el tratamiento de Toxina Botulínica?">
+                3. Manejo de Objeción (Temor al dolor y agujas)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Smartphone WhatsApp Mockup 100% Funcional -->
+        <div>
+          <div class="phone-mockup">
+            <div class="phone-notch"></div>
+
+            <div class="wa-header">
+              <div class="wa-avatar">
+                <img src="assets/images/paola-pabon-solo-logo.png" alt="Avatar AURA-AI">
+              </div>
+              <div>
+                <div class="wa-status-name">AURA • IPS Paola Pabón</div>
+                <div class="wa-status-online">en línea (IA Clínica 24/7)</div>
+              </div>
+            </div>
+
+            <div class="wa-chat-window" id="waChatWindow">
+              <div class="wa-msg wa-msg-received">
+                ¡Hola! Bienvenida a la IPS Estética y Spa Paola Pabón en Yumbo. Soy AURA, tu asistente de valoración clínica. ¿En qué procedimiento o área facial te gustaría enfocar tu armonización hoy?
+                <div class="wa-time">Ahora</div>
+              </div>
+            </div>
+
+            <div class="wa-input-bar">
+              <input type="text" id="waInput" placeholder="Escribe un mensaje aquí (ej: botox, cita)...">
+              <button class="wa-send-btn" id="waSendBtn" aria-label="Enviar mensaje">➔</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TARJETAS DE CAPACIDADES -->
+    <section class="section section-dark">
+      <div class="container">
+        <div class="text-center mb-4">
+          <span class="badge-pill badge-amber">ARQUITECTURA DE IA</span>
+          <h2>Capacidades Avanzadas de AURA-AI</h2>
+        </div>
+
+        <div class="grid-3">
+          <div class="card-white border-petroleum">
+            <div class="badge-pill mb-2">INTEGRACIÓN CRM</div>
+            <h3>Lead Scoring Inmediato</h3>
+            <p class="text-muted mt-2">
+              Clasifica automáticamente las intenciones de compra (Alto Ticket vs. Consulta General) y asigna la etiqueta de prioridad en el Command Center de la IPS.
+            </p>
+          </div>
+
+          <div class="card-white border-coral">
+            <div class="badge-pill badge-coral mb-2">TRIAJE HUMANO</div>
+            <h3>Escalamiento Inteligente</h3>
+            <p class="text-muted mt-2">
+              Si la paciente solicita condiciones especiales o requiere revisión médica personalizada, AURA-AI deriva la conversación sin interrupciones a la recepcionista humana.
+            </p>
+          </div>
+
+          <div class="card-white border-gold">
+            <div class="badge-pill mb-2">DISPONIBILIDAD TOTAL</div>
+            <h3>Respuestas en &lt; 5 Segundos</h3>
+            <p class="text-muted mt-2">
+              Atención inmediata las 24 horas del día, los 7 días de la semana, evitando que los prospectos de campañas nocturnas o de fin de semana busquen otras opciones.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER COMÚN -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo">
+        <img src="assets/images/paolapabon.png" alt="IPS Paola Pabón Logo Footer">
+      </div>
+      <address class="footer-address">
+        <strong>IPS Estética y Spa Paola Pabón S.A.S.</strong><br>
+        Calle 5 #7-24, Barrio Puerto Isaacs, Yumbo, Valle del Cauca<br>
+        Atención Médica Presencial y Valoraciones Virtuales
+      </address>
+      <div class="footer-credits">
+        <span>Propuesta de Ingeniería desarrollada por <a href="https://bruiser.tech" target="_blank" rel="noopener">Bruiser Tech (bruiser.tech)</a></span>
+        <span>Contacto WhatsApp Directo: (+57) 305 386 2774</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
