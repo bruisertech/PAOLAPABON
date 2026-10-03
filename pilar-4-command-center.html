@@ -1,111 +1,481 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/clinic-luxury.css">
-
-  <title>Pilar 4: Command Center, Itinerario & Digitalización | Bruiser Tech</title>
+  <title>Pilar 4: Command Center e Itinerario Inteligente | Bruiser Tech</title>
+  <style>
+    .schedule-item {
+      background: white;
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+      transition: all 0.2s ease;
+      display: grid;
+      grid-template-columns: 140px 1fr 140px;
+      gap: 1.5rem;
+      align-items: center;
+      box-shadow: var(--shadow-subtle);
+    }
+    @media (max-width: 800px) {
+      .schedule-item { grid-template-columns: 1fr; gap: 0.75rem; }
+    }
+    .schedule-item:hover {
+      box-shadow: var(--shadow-card);
+      border-color: var(--color-accent-gold);
+    }
+    .schedule-time {
+      font-weight: 800;
+      color: var(--color-primary);
+      font-size: 0.95rem;
+    }
+    .schedule-empty {
+      background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+      border: 2px dashed #F59E0B;
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.15);
+    }
+    .status-badge {
+      display: inline-block;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .status-confirmed { background: #DCFCE7; color: #166534; }
+    .status-prep { background: #FEF9C3; color: #854D0E; }
+    .status-free { background: #FEF3C7; color: #92400E; }
+    .tab-nav-btn {
+      padding: 0.65rem 1.25rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border-radius: 8px;
+      border: 1px solid var(--color-border-subtle);
+      background: white;
+      cursor: pointer;
+      color: var(--color-text-dark);
+      transition: all 0.2s;
+    }
+    .tab-nav-btn.active {
+      background: var(--color-primary);
+      color: white;
+      border-color: var(--color-primary);
+    }
+  </style>
 </head>
 <body>
-  
-  <!-- TOP ANNOUNCEMENT BAR -->
+
+  <!-- BARRA DE ANUNCIOS SUPERIOR -->
   <div class="top-bar">
     <div class="container top-bar-inner">
       <div>
         <span>IPS PAOLA PABÓN • SEDE YUMBO: CALLE 5 #7-24, PUERTO ISAACS</span>
       </div>
       <div>
-        <span>Citas Privadas: <a href="https://instagram.com/paolapabonestetica/Hola%20Dra.%20Paola%20Pabón,%20deseo%20solicitar%20una%20cita%20de%20valoración" target="_blank">+57 </a></span>
+        <span>Instagram Oficial: <a href="https://www.instagram.com/paolapabonestetica/" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg> @paolapabonestetica</a></span>
       </div>
     </div>
   </div>
 
-  <!-- MAIN NAVIGATION -->
+  <!-- NAVEGACIÓN PRINCIPAL -->
   <header class="header-nav">
     <div class="container nav-container">
       <a href="index.html" class="brand-wrapper">
         <img src="assets/images/paola-pabon-solo-logo.png" alt="Dra. Paola Pabón">
         <div class="brand-tagline">
           <div>DRA. PAOLA PABÓN</div>
-          <div style="font-size: 0.65rem; color: var(--color-accent-gold); font-weight: 600;">MEDICINA ESTÉTICA & SPA</div>
+          <div style="font-size: 0.65rem; color: var(--color-accent-gold); font-weight: 600;">MEDICINA ESTÉTICA Y SPA</div>
         </div>
       </a>
 
       <nav>
         <ul class="nav-menu">
-          <li><a href="index.html" >1. Portal Web</a></li>
-          <li><a href="pilar-2-agente-ia.html" >2. Agente IA (Community)</a></li>
-          <li><a href="pilar-3-espejo-ia.html" >3. Espejo de IA & PDF</a></li>
+          <li><a href="index.html">1. Portal Web</a></li>
+          <li><a href="pilar-2-agente-ia.html">2. Agente IA (Community)</a></li>
+          <li><a href="pilar-3-espejo-ia.html">3. Espejo de IA y PDF</a></li>
           <li><a href="pilar-4-command-center.html" class="active">4. Command Center</a></li>
-          <li><a href="propuesta-economica.html" class="btn btn-gold" style="padding: 0.5rem 1.25rem; font-size: 0.82rem;">Propuesta & Inversión</a></li>
+          <li><a href="propuesta-economica.html" class="btn btn-gold" style="padding: 0.5rem 1.25rem; font-size: 0.82rem;">Propuesta e Inversión</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-
   <section class="section" style="padding: 4rem 0 2rem; background: var(--color-sand);">
-    <div class="container" style="text-align: center; max-width: 850px; margin: 0 auto;">
-      <span class="sub-badge">PILAR TECNOLÓGICO 4 • EL CEREBRO OPERATIVO & FINANCIERO</span>
+    <div class="container" style="text-align: center; max-width: 900px; margin: 0 auto;">
+      <span class="sub-badge">PILAR TECNOLÓGICO 4 • SUPER ASISTENTE PERSONAL Y CONTROL CLÍNICO</span>
       <h1 style="font-size: clamp(2.2rem, 4vw, 3.4rem); margin-bottom: 1rem;">
-        Command Center & <i>Inteligencia de Datos</i>
+        Command Center: <i>Super Asistente de la Dra. Paola</i>
       </h1>
       <p style="font-size: 1.1rem;">
-        Itinerario diario al WhatsApp de la Dra. Paola a las 7:30 AM, digitalización OCR de historias clínicas físicas en papel y motor predictivo de recompra de inyectables.
+        Cronograma quirúrgico con horarios exactos de pacientes, preparación milimétrica de insumos farmacológicos por enfermería, detección proactiva de espacios libres y radar predictivo de recompra CRM.
       </p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      
-      <!-- 1. ITINERARIO DE WHATSAPP A LAS 7:30 AM -->
-      <div class="grid-2" style="margin-bottom: 5rem;">
-        <div>
-          <span class="sub-badge">AUTOMATIZACIÓN MATUTINA</span>
-          <h2 style="font-size: 2rem; margin-bottom: 1rem;">1. Itinerario Diario al WhatsApp de Paola (7:30 AM)</h2>
-          <p style="font-size: 1rem; line-height: 1.7; margin-bottom: 1.5rem;">
-            Cada mañana, antes de salir de casa, la Dra. Paola recibe un resumen ejecutivo formateado por IA en su WhatsApp personal con todo lo que necesita saber para su jornada en la Sede Yumbo.
-          </p>
-          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.9rem; color: var(--color-text-dark);">
-            <li>&#10003; <strong>Citas confirmadas del día:</strong> Quién viene y a qué procedimiento exacto.</li>
-            <li>&#10003; <strong>Insumos a preparar:</strong> Viales de Sculptra®, jeringas de Radiesse® o unidades de Botox necesarias.</li>
-            <li>&#10003; <strong>Alertas de Recompra:</strong> Pacientes que cumplen 4 u 11 meses hoy para invitarlas a su retoque.</li>
-          </ul>
+
+      <!-- BRIEFING DEL SUPER ASISTENTE PERSONAL (AUDIO / TEXTO MATUTINO 07:15 AM) -->
+      <div style="background: linear-gradient(135deg, #072C33 0%, #0A434D 100%); border-radius: var(--radius-lg); padding: 2.25rem; color: white; margin-bottom: 3.5rem; box-shadow: var(--shadow-lift); border: 1px solid rgba(197, 168, 128, 0.3);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 1.25rem; margin-bottom: 1.5rem;">
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--color-accent-gold); color: #072C33; font-weight: 800; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+              ⚡
+            </div>
+            <div>
+              <div style="font-size: 0.75rem; color: var(--color-accent-gold); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">AURA Executive Assistant • Despacho Matutino</div>
+              <div style="font-size: 1.25rem; font-weight: 700;">Hoja de Ruta de Hoy • Sábado 3 de Octubre, 2026</div>
+            </div>
+          </div>
+          <div style="background: rgba(255,255,255,0.08); padding: 0.4rem 0.85rem; border-radius: 9999px; font-size: 0.78rem;">
+            📍 Sede Yumbo (Calle 5 #7-24, Puerto Isaacs)
+          </div>
         </div>
 
-        <div>
-          <!-- MOCKUP MENSAJE MATUTINO -->
-          <div style="background: #0B141A; border: 8px solid #232D36; border-radius: var(--radius-lg); padding: 1.5rem; color: #E9EDEF; box-shadow: var(--shadow-lift);">
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem; margin-bottom: 1rem; font-size: 0.8rem; color: #8696A0;">
-              <span>WhatsApp • Dra. Paola Andrea Pabón</span>
-              <span>Hoy, 07:30 AM</span>
+        <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.75rem; opacity: 0.95;">
+          <strong>«¡Buenos días, Dra. Paola!</strong> He organizado su agenda médica de hoy para que su jornada en cabina fluya con total tranquilidad. Tiene <strong>6 pacientes programados</strong>, enfermería ya tiene los <strong>insumos esterilizados y reconstituidos</strong>, y detecté <strong>2 ventanas libres</strong> para su descanso o atención de sobrecupos de alta rentabilidad.»
+        </p>
+
+        <!-- KPI COUNTERS -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1rem;">
+          <div style="background: rgba(0,0,0,0.25); padding: 1rem; border-radius: 8px; border-left: 3px solid #10B981;">
+            <div style="font-size: 0.72rem; color: #A5B4B6; text-transform: uppercase;">Pacientes Citados</div>
+            <div style="font-size: 1.6rem; font-weight: 800; color: white;">6 Confirmados</div>
+            <div style="font-size: 0.72rem; color: #10B981;">100% Asistencia Prevista</div>
+          </div>
+
+          <div style="background: rgba(0,0,0,0.25); padding: 1rem; border-radius: 8px; border-left: 3px solid #F59E0B;">
+            <div style="font-size: 0.72rem; color: #A5B4B6; text-transform: uppercase;">Espacios Libres IA</div>
+            <div style="font-size: 1.6rem; font-weight: 800; color: #F59E0B;">2h 15m Libres</div>
+            <div style="font-size: 0.72rem; color: #FCD34D;">11:30 AM y 03:30 PM</div>
+          </div>
+
+          <div style="background: rgba(0,0,0,0.25); padding: 1rem; border-radius: 8px; border-left: 3px solid var(--color-accent-gold);">
+            <div style="font-size: 0.72rem; color: #A5B4B6; text-transform: uppercase;">Farmacia e Insumos</div>
+            <div style="font-size: 1.6rem; font-weight: 800; color: var(--color-accent-gold);">100% Listos</div>
+            <div style="font-size: 0.72rem; color: #E5E7EB;">4 Viales Sculptra + Botox</div>
+          </div>
+
+          <div style="background: rgba(0,0,0,0.25); padding: 1rem; border-radius: 8px; border-left: 3px solid #38BDF8;">
+            <div style="font-size: 0.72rem; color: #A5B4B6; text-transform: uppercase;">Facturación Proyectada</div>
+            <div style="font-size: 1.6rem; font-weight: 800; color: #38BDF8;">$6.850.000</div>
+            <div style="font-size: 0.72rem; color: #BAE6FD;">COP estimada jornada</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTONES DE VISTA INTERACTIVA -->
+      <div style="display: flex; gap: 0.75rem; margin-bottom: 2rem; flex-wrap: wrap;">
+        <button id="tab-cronograma-btn" onclick="showDashboardTab('cronograma')" class="tab-nav-btn active">
+          📅 Cronograma Quirúrgico del Día
+        </button>
+        <button id="tab-insumos-btn" onclick="showDashboardTab('insumos')" class="tab-nav-btn">
+          🧪 Checklist de Insumos y Farmacia
+        </button>
+        <button id="tab-crm-btn" onclick="showDashboardTab('crm')" class="tab-nav-btn">
+          🔔 Alertas Predictivas CRM (Recompra)
+        </button>
+      </div>
+
+      <!-- CONTENIDO 1: CRONOGRAMA CON HORAS EXACTAS Y ESPACIOS VACÍOS ASISTIDOS -->
+      <div id="tab-cronograma">
+        
+        <!-- PACIENTE 1 -->
+        <div class="schedule-item">
+          <div>
+            <div class="schedule-time">08:00 AM - 09:15 AM</div>
+            <div style="font-size: 0.75rem; color: var(--color-text-muted);">Duración: 1h 15m</div>
+          </div>
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+              <strong style="font-size: 1.1rem; color: var(--color-primary);">Mariana Vélez Giraldo</strong>
+              <span style="font-size: 0.75rem; color: var(--color-accent-gold); font-weight: 700;">(42 años • Paciente VIP)</span>
             </div>
-            <div style="background: #202C33; padding: 1.25rem; border-radius: 0.85rem; font-size: 0.86rem; line-height: 1.6; border-left: 3px solid #00A884;">
-               <strong>¡Buenos días, Dra. Paola!</strong> Tu itinerario para hoy en <em>Sede Yumbo</em>:<br><br>
-               <strong>Ocupación:</strong> 8 pacientes agendadas en cabina (100% de ocupación).<br>
-               <strong>Preparación de Insumos:</strong><br>
-              • 3 pacientes para Sculptra®: dejar listos 4 viales reconstituidos.<br>
-              • 2 pacientes para Toxina Botulínica (Baby Botox).<br>
-              • 1 paciente para Labios Haute Couture (Ácido Reticulado).<br><br>
-               <strong>Alertas Predictivas de Recompra:</strong><br>
-              • Hay 4 pacientes que cumplen hoy 4 meses de su aplicación de Botox. El agente AURA ya inició el contacto de cortesía.
+            <div style="font-size: 0.9rem; font-weight: 600; color: var(--color-text-dark); margin-bottom: 0.5rem;">
+              Tratamiento: Bioestimulación de Colágeno Sculptra® (2 Viales)
+            </div>
+            <div style="font-size: 0.82rem; color: #4B5563; background: var(--color-sand); padding: 0.6rem 0.85rem; border-radius: 6px;">
+              <strong>Insumos en Cabina:</strong> 2 viales Sculptra® reconstituidos con 24h de antelación (8ml agua estéril + 2ml lidocaína al 2%), 2 cánulas dérmicas 22G x 50mm, clorhexidina tópica.
+            </div>
+          </div>
+          <div style="text-align: right;">
+            <span class="status-badge status-confirmed">En Sala de Espera</span>
+          </div>
+        </div>
+
+        <!-- PACIENTE 2 -->
+        <div class="schedule-item">
+          <div>
+            <div class="schedule-time">09:30 AM - 10:30 AM</div>
+            <div style="font-size: 0.75rem; color: var(--color-text-muted);">Duración: 1h 00m</div>
+          </div>
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+              <strong style="font-size: 1.1rem; color: var(--color-primary);">Valentina Rentería</strong>
+              <span style="font-size: 0.75rem; color: var(--color-accent-gold); font-weight: 700;">(29 años • Primera Cita)</span>
+            </div>
+            <div style="font-size: 0.9rem; font-weight: 600; color: var(--color-text-dark); margin-bottom: 0.5rem;">
+              Tratamiento: Armonización de Labios Haute Couture
+            </div>
+            <div style="font-size: 0.82rem; color: #4B5563; background: var(--color-sand); padding: 0.6rem 0.85rem; border-radius: 6px;">
+              <strong>Insumos en Cabina:</strong> 1 jeringa Ácido Hialurónico reticulado (Restylane Kysse 1.0ml), aguja 30G 1/2, crema anestésica tópica al 23% aplicada en sala de espera a las 9:10 AM.
+            </div>
+          </div>
+          <div style="text-align: right;">
+            <span class="status-badge status-prep">Anestesia Tópica</span>
+          </div>
+        </div>
+
+        <!-- PACIENTE 3 -->
+        <div class="schedule-item">
+          <div>
+            <div class="schedule-time">10:30 AM - 11:30 AM</div>
+            <div style="font-size: 0.75rem; color: var(--color-text-muted);">Duración: 1h 00m</div>
+          </div>
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+              <strong style="font-size: 1.1rem; color: var(--color-primary);">Carlos Alberto Echeverri</strong>
+              <span style="font-size: 0.75rem; color: var(--color-accent-gold); font-weight: 700;">(48 años • Mantenimiento)</span>
+            </div>
+            <div style="font-size: 0.9rem; font-weight: 600; color: var(--color-text-dark); margin-bottom: 0.5rem;">
+              Tratamiento: Toxina Botulínica Dinámica (Baby Botox)
+            </div>
+            <div style="font-size: 0.82rem; color: #4B5563; background: var(--color-sand); padding: 0.6rem 0.85rem; border-radius: 6px;">
+              <strong>Insumos en Cabina:</strong> 45 Unidades Toxina Botulínica recién diluida, 3 jeringas BD Ultra-Fine 31G para tercio superior (frente, entrecejo y periocular).
+            </div>
+          </div>
+          <div style="text-align: right;">
+            <span class="status-badge status-confirmed">Confirmado</span>
+          </div>
+        </div>
+
+        <!-- ESPACIO LIBRE ASISTIDO 1 (11:30 AM - 01:00 PM) -->
+        <div id="free-slot-1" class="schedule-empty">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                <span style="font-size: 1.2rem;">⏱️</span>
+                <strong style="font-size: 1.15rem; color: #92400E;">ESPACIO LIBRE ASISTIDO POR AURA: 11:30 AM a 01:00 PM (1h 30m)</strong>
+                <span class="status-badge status-free">Tiempo Libre</span>
+              </div>
+              <p style="font-size: 0.92rem; color: #78350F; line-height: 1.6; margin: 0; max-width: 780px;">
+                <strong>Dra. Paola:</strong> Tiene este espacio libre de <strong>11:30 AM a 01:00 PM</strong>. Es su horario reservado para almuerzo ejecutivo y descanso. Sin embargo, tenemos en lista de espera de WhatsApp a la paciente <strong>Sandra Morales</strong> solicitando un sobrecupo de Toxina Botulínica express (30 minutos). ¿Desea que la agendemos de 12:00 PM a 12:30 PM manteniendo 1 hora completa de almuerzo, o prefiere bloquear el bloque entero para descanso?
+              </p>
+            </div>
+            <div id="slot-1-actions" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button onclick="acceptSobrecupo()" class="btn btn-gold" style="font-size: 0.8rem; padding: 0.5rem 0.85rem; cursor:pointer;">
+                ✓ Agendar Sobrecupo Sandra Morales
+              </button>
+              <button onclick="keepRest()" class="btn btn-outline" style="border-color:#92400E; color:#92400E; font-size: 0.8rem; padding: 0.5rem 0.85rem; cursor:pointer;">
+                Bloquear para Almuerzo y Descanso
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PACIENTE 4 -->
+        <div class="schedule-item">
+          <div>
+            <div class="schedule-time">01:00 PM - 02:15 PM</div>
+            <div style="font-size: 0.75rem; color: var(--color-text-muted);">Duración: 1h 15m</div>
+          </div>
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+              <strong style="font-size: 1.1rem; color: var(--color-primary);">Dra. Claudia Lozano</strong>
+              <span style="font-size: 0.75rem; color: var(--color-accent-gold); font-weight: 700;">(38 años • Colega Médica)</span>
+            </div>
+            <div style="font-size: 0.9rem; font-weight: 600; color: var(--color-text-dark); margin-bottom: 0.5rem;">
+              Tratamiento: Radiesse® Contorno Mandibular y Cuello (Vectorización)
+            </div>
+            <div style="font-size: 0.82rem; color: #4B5563; background: var(--color-sand); padding: 0.6rem 0.85rem; border-radius: 6px;">
+              <strong>Insumos en Cabina:</strong> 1 jeringa Radiesse® 1.5cc (CaHA) + 0.3ml lidocaína, cánula dérmica 25G x 50mm, lápiz quirúrgico para marcación de vectores tensores.
+            </div>
+          </div>
+          <div style="text-align: right;">
+            <span class="status-badge status-confirmed">Confirmada</span>
+          </div>
+        </div>
+
+        <!-- PACIENTE 5 -->
+        <div class="schedule-item">
+          <div>
+            <div class="schedule-time">02:30 PM - 03:30 PM</div>
+            <div style="font-size: 0.75rem; color: var(--color-text-muted);">Duración: 1h 00m</div>
+          </div>
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+              <strong style="font-size: 1.1rem; color: var(--color-primary);">Sofía Cadavid</strong>
+              <span style="font-size: 0.75rem; color: var(--color-accent-gold); font-weight: 700;">(34 años • Protocolo Glow)</span>
+            </div>
+            <div style="font-size: 0.9rem; font-weight: 600; color: var(--color-text-dark); margin-bottom: 0.5rem;">
+              Tratamiento: Facial Casmara + Mesoterapia Biorevitalizante NCTF 135HA
+            </div>
+            <div style="font-size: 0.82rem; color: #4B5563; background: var(--color-sand); padding: 0.6rem 0.85rem; border-radius: 6px;">
+              <strong>Insumos en Cabina:</strong> 1 ampolla NCTF 135HA Fillmed, Dermapen esterilizado con cabezal 36 microagujas, Máscara Algae Peel-Off Casmara Reafirmante.
+            </div>
+          </div>
+          <div style="text-align: right;">
+            <span class="status-badge status-confirmed">Confirmada</span>
+          </div>
+        </div>
+
+        <!-- ESPACIO LIBRE ASISTIDO 2 (03:30 PM - 04:15 PM) -->
+        <div class="schedule-empty" style="background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%); border-color: #10B981;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+                <span style="font-size: 1.2rem;">☕</span>
+                <strong style="font-size: 1.1rem; color: #166534;">ESPACIO LIBRE ASISTIDO: 03:30 PM a 04:15 PM (45m)</strong>
+                <span class="status-badge" style="background:#BBF7D0; color:#166534;">Gestión y Descanso</span>
+              </div>
+              <p style="font-size: 0.88rem; color: #14532D; margin: 0;">
+                <strong>Dra. Paola:</strong> Ventana libre de 45 minutos. Sugerencia de AURA: Espacio idóneo para revisar notas de evolución clínica, firmar consentimientos digitales del día o grabar 1 reel de antes y después con el caso de labios de la mañana.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- PACIENTE 6 -->
+        <div class="schedule-item">
+          <div>
+            <div class="schedule-time">04:15 PM - 05:15 PM</div>
+            <div style="font-size: 0.75rem; color: var(--color-text-muted);">Duración: 1h 00m</div>
+          </div>
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+              <strong style="font-size: 1.1rem; color: var(--color-primary);">Beatriz Elena Gómez</strong>
+              <span style="font-size: 0.75rem; color: var(--color-accent-gold); font-weight: 700;">(52 años • Control)</span>
+            </div>
+            <div style="font-size: 0.9rem; font-weight: 600; color: var(--color-text-dark); margin-bottom: 0.5rem;">
+              Tratamiento: Control y Retoque de 15 Días (Toxina Botulínica)
+            </div>
+            <div style="font-size: 0.82rem; color: #4B5563; background: var(--color-sand); padding: 0.6rem 0.85rem; border-radius: 6px;">
+              <strong>Insumos en Cabina:</strong> 10 Unidades Toxina Botulínica preparadas para micro-ajuste en cola de ceja, jeringa 31G.
+            </div>
+          </div>
+          <div style="text-align: right;">
+            <span class="status-badge status-confirmed">Confirmada</span>
+          </div>
+        </div>
+
+        <!-- CIERRE OPERATIVO -->
+        <div style="background: var(--color-sand); border-radius: var(--radius-md); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--color-text-muted);">
+          <div><strong>05:15 PM - 05:45 PM:</strong> Cierre de cabina, reporte de consumo a farmacia y sincronización automática de consentimientos en nube.</div>
+          <span style="color:#10B981; font-weight:700;">✓ Flujo Sincronizado</span>
+        </div>
+
+      </div>
+
+      <!-- CONTENIDO 2: INSUMOS Y FARMACIA -->
+      <div id="tab-insumos" style="display: none;">
+        <div style="background: white; border-radius: var(--radius-lg); padding: 2.5rem; box-shadow: var(--shadow-card); border: 1px solid var(--color-border-subtle);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h3 style="font-size: 1.3rem; color: var(--color-primary); margin: 0;">Requerimiento Farmacológico de Cabina (Hoy)</h3>
+              <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0.25rem 0 0;">Verificado por enfermería a las 7:00 AM bajo estricta cadena de frío.</p>
+            </div>
+            <button onclick="alert('Todos los insumos han sido verificados conforme a la norma de habilitación en salud.')" class="btn btn-gold" style="font-size: 0.82rem; padding: 0.5rem 1rem;">
+              ✓ Marcar Todo Verificado
+            </button>
+          </div>
+
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem;">
+            <thead>
+              <tr style="background: var(--color-primary); color: white; text-align: left;">
+                <th style="padding: 0.75rem 1rem;">Insumo / Medicamento</th>
+                <th style="padding: 0.75rem 1rem;">Cantidad Total</th>
+                <th style="padding: 0.75rem 1rem;">Estado en Cabina</th>
+                <th style="padding: 0.75rem 1rem;">Destinado a Paciente(s)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid #E5E7EB;">
+                <td style="padding: 0.75rem 1rem;"><strong>Sculptra® (Galderma PLLA)</strong></td>
+                <td style="padding: 0.75rem 1rem;">2 Viales</td>
+                <td style="padding: 0.75rem 1rem;"><span style="color:#10B981; font-weight:700;">● Reconstituido (24h)</span></td>
+                <td style="padding: 0.75rem 1rem;">Mariana Vélez (8:00 AM)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #E5E7EB;">
+                <td style="padding: 0.75rem 1rem;"><strong>Toxina Botulínica (Allergan)</strong></td>
+                <td style="padding: 0.75rem 1rem;">55 Unidades</td>
+                <td style="padding: 0.75rem 1rem;"><span style="color:#10B981; font-weight:700;">● Diluido en Nevera</span></td>
+                <td style="padding: 0.75rem 1rem;">Carlos Echeverri (10:30 AM) + Beatriz Gómez (4:15 PM)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #E5E7EB;">
+                <td style="padding: 0.75rem 1rem;"><strong>Ácido Hialurónico Restylane Kysse</strong></td>
+                <td style="padding: 0.75rem 1rem;">1 Jeringa 1.0ml</td>
+                <td style="padding: 0.75rem 1rem;"><span style="color:#10B981; font-weight:700;">● Sellado en Cabina</span></td>
+                <td style="padding: 0.75rem 1rem;">Valentina Rentería (9:30 AM)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #E5E7EB;">
+                <td style="padding: 0.75rem 1rem;"><strong>Radiesse® CaHA 1.5cc</strong></td>
+                <td style="padding: 0.75rem 1rem;">1 Jeringa precargada</td>
+                <td style="padding: 0.75rem 1rem;"><span style="color:#10B981; font-weight:700;">● Sellado en Cabina</span></td>
+                <td style="padding: 0.75rem 1rem;">Dra. Claudia Lozano (1:00 PM)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #E5E7EB;">
+                <td style="padding: 0.75rem 1rem;"><strong>NCTF 135HA Fillmed</strong></td>
+                <td style="padding: 0.75rem 1rem;">1 Ampolla 3.0ml</td>
+                <td style="padding: 0.75rem 1rem;"><span style="color:#10B981; font-weight:700;">● Lista con Dermapen</span></td>
+                <td style="padding: 0.75rem 1rem;">Sofía Cadavid (2:30 PM)</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.75rem 1rem;"><strong>Cánulas 22G y 25G / Agujas 31G</strong></td>
+                <td style="padding: 0.75rem 1rem;">Pack de 6 unidades</td>
+                <td style="padding: 0.75rem 1rem;"><span style="color:#10B981; font-weight:700;">● Esterilizado</span></td>
+                <td style="padding: 0.75rem 1rem;">Insumos generales del día</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- CONTENIDO 3: ALERTAS PREDICTIVAS CRM (RECOMPRA) -->
+      <div id="tab-crm" style="display: none;">
+        <div style="background: white; border-radius: var(--radius-lg); padding: 2.5rem; box-shadow: var(--shadow-card); border: 1px solid var(--color-border-subtle); margin-bottom: 3rem;">
+          <h3 style="font-size: 1.3rem; color: var(--color-primary); margin-bottom: 0.5rem;">Pacientes en Ventana Biológica de Retoque (Hoy)</h3>
+          <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 1.5rem;">El CRM identificó a estas pacientes de forma automática para evitar que pierdan los resultados de sus tratamientos.</p>
+
+          <div class="grid-3">
+            <div style="background: var(--color-sand); padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--color-accent-gold);">
+              <div style="font-size: 0.72rem; color: var(--color-accent-gold); font-weight: 800;">CICLO MES 4 • TOXINA BOTULÍNICA</div>
+              <strong style="display:block; margin: 0.25rem 0; font-size: 1rem;">Lucía Fernández (34 años)</strong>
+              <div style="font-size: 0.8rem; color: #4B5563; margin-bottom: 0.75rem;">Último Botox: 3 de Junio 2026. Fuerza muscular comenzando a reaparecer.</div>
+              <span class="status-badge status-confirmed">✓ AURA envió WhatsApp (Respondió)</span>
+            </div>
+
+            <div style="background: var(--color-sand); padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--color-primary);">
+              <div style="font-size: 0.72rem; color: var(--color-primary); font-weight: 800;">CICLO MES 11 • ÁCIDO HIALURÓNICO</div>
+              <strong style="display:block; margin: 0.25rem 0; font-size: 1rem;">Marcela Ríos (40 años)</strong>
+              <div style="font-size: 0.8rem; color: #4B5563; margin-bottom: 0.75rem;">Última Armonización Labial: Noviembre 2025. Tiempo óptimo para mantenimiento.</div>
+              <span class="status-badge status-confirmed">✓ Agendada para el Martes</span>
+            </div>
+
+            <div style="background: var(--color-sand); padding: 1.25rem; border-radius: 8px; border-left: 4px solid #10B981;">
+              <div style="font-size: 0.72rem; color: #10B981; font-weight: 800;">CUMPLEAÑOS DEL MES</div>
+              <strong style="display:block; margin: 0.25rem 0; font-size: 1rem;">Gloria Patricia Parra</strong>
+              <div style="font-size: 0.8rem; color: #4B5563; margin-bottom: 0.75rem;">Cumpleaños el 5 de Octubre. Bono de cortesía para Facial Casmara.</div>
+              <span class="status-badge" style="background:#E0F2FE; color:#0369A1;">Cupón VIP Enviado</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 2. DIGITALIZACIÓN DE HISTORIAS CLÍNICAS EN PAPEL (OCR) -->
-      <div style="background: var(--color-white); border-radius: var(--radius-lg); padding: 3.5rem 2.5rem; box-shadow: var(--shadow-card); border: 1px solid var(--color-border-subtle); margin-bottom: 5rem;">
+      <!-- 2. INGESTA Y DIGITALIZACIÓN DE HISTORIAS CLÍNICAS EN PAPEL (OCR) -->
+      <div style="background: var(--color-white); border-radius: var(--radius-lg); padding: 3.5rem 2.5rem; box-shadow: var(--shadow-card); border: 1px solid var(--color-border-subtle); margin-top: 3.5rem;">
         <div style="text-align: center; max-width: 750px; margin: 0 auto 3rem;">
           <span class="sub-badge">TRANSICIÓN DE PAPEL A INTELIGENCIA ARTIFICIAL</span>
           <h2 style="font-size: 2.2rem; margin-bottom: 0.75rem;">
-            2. Ingesta & Digitalización de Fichas Físicas
+            2. Ingesta y Digitalización de Fichas Físicas
           </h2>
           <p style="font-size: 1rem;">
             La IPS tiene años de historias en papel. Con la visión multimodal de Gemini, basta con tomar una foto con el celular a la ficha física para poblar la base de datos digital en 3 segundos.
@@ -124,7 +494,7 @@
               <strong>Fecha:</strong> 15 de Noviembre 2024.
             </div>
             <div style="margin-top: 1.5rem; text-align: center;">
-              <button id="scan-btn" onclick="simulateOcr()" class="btn btn-gold" style="font-size: 0.85rem; width: 100%;">
+              <button id="scan-btn" onclick="simulateOcr()" class="btn btn-gold" style="font-size: 0.85rem; width: 100%; cursor:pointer;">
                  Escanear Ficha con Gemini Vision
               </button>
             </div>
@@ -142,37 +512,10 @@
         </div>
       </div>
 
-      <!-- 3. MOTOR PREDICTIVO DE RECOMPRA -->
-      <div style="text-align: center; margin-bottom: 3rem;">
-        <span class="sub-badge">RECURRENCIA AUTOMATIZADA</span>
-        <h2 style="font-size: 2rem;">3. Estrategias para que las Pacientes Vuelvan</h2>
-      </div>
-
-      <div class="grid-3">
-        <div style="background: var(--color-white); padding: 2rem; border-radius: var(--radius-md); box-shadow: var(--shadow-subtle); border-top: 4px solid var(--color-accent-gold);">
-          <span style="font-size: 0.75rem; font-weight: 800; color: var(--color-accent-gold);">CICLO MES 4</span>
-          <h3 style="font-size: 1.2rem; margin: 0.5rem 0;">Retoque de Toxina Botulínica</h3>
-          <p style="font-size: 0.88rem;">Alerta automática cuando la fuerza muscular empieza a reaparecer, evitando que la paciente pierda los resultados logrados.</p>
-        </div>
-
-        <div style="background: var(--color-white); padding: 2rem; border-radius: var(--radius-md); box-shadow: var(--shadow-subtle); border-top: 4px solid var(--color-primary);">
-          <span style="font-size: 0.75rem; font-weight: 800; color: var(--color-primary);">CICLO MES 11</span>
-          <h3 style="font-size: 1.2rem; margin: 0.5rem 0;">Mantenimiento de Labios / Ácido</h3>
-          <p style="font-size: 0.88rem;">Disparador de cita previa antes de que el ácido hialurónico se reabsorba completamente, garantizando continuidad anual.</p>
-        </div>
-
-        <div style="background: var(--color-white); padding: 2rem; border-radius: var(--radius-md); box-shadow: var(--shadow-subtle); border-top: 4px solid #10B981;">
-          <span style="font-size: 0.75rem; font-weight: 800; color: #10B981;">ANIVERSARIO & CUMPLEAÑOS</span>
-          <h3 style="font-size: 1.2rem; margin: 0.5rem 0;">Beneficio VIP Personalizado</h3>
-          <p style="font-size: 0.88rem;">Envío automático de bono para facial Casmara o cóctel de mesoterapia en el mes de cumpleaños de la paciente.</p>
-        </div>
-      </div>
-
     </div>
   </section>
 
-  
-  <!-- LUXURY FOOTER -->
+  <!-- PIE DE PÁGINA CLÍNICO DE LUJO -->
   <footer class="footer-luxury">
     <div class="container">
       <div class="footer-grid">
@@ -192,9 +535,9 @@
           <h4>Los 4 Pilares</h4>
           <ul>
             <li><a href="index.html">1. Portal Web de Captación</a></li>
-            <li><a href="pilar-2-agente-ia.html">2. Agente IA (Community & Citas)</a></li>
-            <li><a href="pilar-3-espejo-ia.html">3. Espejo de IA & Plan PDF</a></li>
-            <li><a href="pilar-4-command-center.html">4. Command Center & Datos</a></li>
+            <li><a href="pilar-2-agente-ia.html">2. Agente IA (Community y Citas)</a></li>
+            <li><a href="pilar-3-espejo-ia.html">3. Espejo de IA y Plan PDF</a></li>
+            <li><a href="pilar-4-command-center.html">4. Command Center y Datos</a></li>
           </ul>
         </div>
 
@@ -203,21 +546,21 @@
           <ul>
             <li>Sculptra® Regeneración de Colágeno</li>
             <li>Radiesse® Efecto Tensor CaHA</li>
-            <li>Toxina Botulínica & Baby Botox</li>
+            <li>Toxina Botulínica y Baby Botox</li>
             <li>Labios Haute Couture</li>
             <li>Hilos Tensores PDO</li>
-            <li>Faciales Casmara & NCTF</li>
+            <li>Faciales Casmara y NCTF</li>
           </ul>
         </div>
 
         <div>
-          <h4>Sede & Contacto</h4>
+          <h4>Sede y Contacto</h4>
           <p>
             Calle 5 #7-24, Barrio Puerto Isaacs<br>
             Yumbo, Valle del Cauca, Colombia
           </p>
           <p style="margin-top: 0.75rem;">
-            <strong>WhatsApp VIP:</strong> <a href="https://www.instagram.com/paolapabonestetica/" style="color:var(--color-accent-gold);">+57 </a>
+            <strong>Instagram Oficial:</strong> <a href="https://www.instagram.com/paolapabonestetica/" target="_blank" style="color:var(--color-accent-gold);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg> @paolapabonestetica</a>
           </p>
         </div>
       </div>
@@ -233,8 +576,37 @@
     </div>
   </footer>
 
-
   <script>
+    function showDashboardTab(tab) {
+      document.querySelectorAll('.tab-nav-btn').forEach(function(b) {
+        b.classList.remove('active');
+      });
+      document.getElementById('tab-' + tab + '-btn').classList.add('active');
+
+      document.getElementById('tab-cronograma').style.display = (tab === 'cronograma') ? 'block' : 'none';
+      document.getElementById('tab-insumos').style.display = (tab === 'insumos') ? 'block' : 'none';
+      document.getElementById('tab-crm').style.display = (tab === 'crm') ? 'block' : 'none';
+    }
+
+    function acceptSobrecupo() {
+      var slot = document.getElementById('free-slot-1');
+      slot.innerHTML = '<div style="background:#ECFDF5; border:1px solid #10B981; border-radius:8px; padding:1.25rem; display:grid; grid-template-columns:140px 1fr 140px; gap:1.5rem; align-items:center;">' +
+        '<div><strong style="color:#065F46;">12:00 PM - 12:30 PM</strong><div style="font-size:0.75rem; color:#047857;">Sobrecupo Express</div></div>' +
+        '<div><strong style="color:#065F46; font-size:1.05rem;">Sandra Morales</strong> <span style="font-size:0.75rem; color:#059669; font-weight:700;">(Sobrecupo Aprobado)</span>' +
+        '<div style="font-size:0.85rem; color:#047857;">Tratamiento: Toxina Botulínica Express (Frente y entrecejo)</div>' +
+        '<div style="font-size:0.78rem; color:#065F46; margin-top:0.25rem;">Insumos: 30 UI Toxina Botulínica preparadas. <strong>Almuerzo de la doctora reprogramado de 12:30 PM a 01:30 PM.</strong></div></div>' +
+        '<div style="text-align:right;"><span class="status-badge status-confirmed">Confirmada</span></div>' +
+        '</div>';
+    }
+
+    function keepRest() {
+      var slot = document.getElementById('free-slot-1');
+      slot.innerHTML = '<div style="background:#F8FAFA; border:1px solid var(--color-border-subtle); border-radius:8px; padding:1.25rem; text-align:center; color:var(--color-primary);">' +
+        '<strong>✓ Espacio Bloqueado Exclusivamente para Almuerzo y Descanso de la Dra. Paola (11:30 AM a 01:00 PM)</strong>' +
+        '<div style="font-size:0.82rem; color:var(--color-text-muted); margin-top:0.25rem;">Sandra Morales fue reasignada para valoración el próximo Martes a primera hora.</div>' +
+        '</div>';
+    }
+
     function simulateOcr() {
       var btn = document.getElementById('scan-btn');
       var body = document.getElementById('ocr-body');
@@ -242,17 +614,17 @@
       btn.style.opacity = "0.7";
 
       setTimeout(function() {
-        btn.innerText = "&#10003; Ficha Digitalizada Exitosamente";
+        btn.innerText = "✓ Ficha Digitalizada Exitosamente";
         btn.style.background = "#10B981";
         btn.style.opacity = "1";
 
-        body.innerHTML = "<strong>PACIENTE REGISTRADA:</strong><br>" +
+        body.innerHTML = "<strong>PACIENTE REGISTRADA EN SISTEMA:</strong><br>" +
           "• <strong>Nombre:</strong> Carmen Elena Ramírez<br>" +
           "• <strong>WhatsApp:</strong> +57 315 882 4410<br>" +
           "• <strong>Último Procedimiento:</strong> Botox 35 UI (Allergan)<br>" +
           "• <strong>Fecha Registrada:</strong> 15/Nov/2024<br>" +
           "• <strong>Estado Clínico:</strong> <span style='color:#B45309; font-weight:700;'>CICLO DE RETOQUE VENCIDO</span><br>" +
-          "• <strong>Acción Automatizada:</strong> Enviar invitación cordial para valoración de mantenimiento en Sede Yumbo.";
+          "• <strong>Acción Automatizada:</strong> Mensaje cordial de WhatsApp enviado para agendar valoración en Sede Yumbo.";
       }, 900);
     }
   </script>
