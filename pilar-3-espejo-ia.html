@@ -9,7 +9,80 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/clinic-luxury.css">
 
-  <title>Pilar 3: Espejo de IA & Ficha Clínica PDF | Bruiser Tech</title>
+  <title>Pilar 3: Espejo de IA & Software de Cabina | Bruiser Tech</title>
+  <style>
+    .ipad-frame {
+      background: #111819;
+      border: 14px solid #232B2D;
+      border-radius: 2.5rem;
+      box-shadow: var(--shadow-lift);
+      overflow: hidden;
+      margin-bottom: 4rem;
+    }
+    .ipad-topbar {
+      background: #1A2426;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.75rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .ipad-content {
+      background: #0B1214;
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      min-height: 520px;
+    }
+    @media (max-width: 900px) {
+      .ipad-content { grid-template-columns: 1fr; }
+    }
+    .ipad-sidebar {
+      background: #121C1E;
+      padding: 2rem;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .ipad-viewport {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .app-input {
+      width: 100%;
+      background: #1A2628;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 0.6rem 0.85rem;
+      color: white;
+      font-size: 0.85rem;
+      outline: none;
+      margin-bottom: 1rem;
+    }
+    .phase-tab-btn {
+      padding: 0.5rem 0.85rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 9999px;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: transparent;
+      color: white;
+      transition: all 0.2s;
+    }
+    .phase-tab-btn.active {
+      background: var(--color-accent-gold);
+      border-color: var(--color-accent-gold);
+      color: #072C33;
+    }
+  </style>
 </head>
 <body>
   
@@ -51,10 +124,10 @@
     <div class="container" style="text-align: center; max-width: 850px; margin: 0 auto;">
       <span class="sub-badge">PILAR TECNOLÓGICO 3 • THE IN-CLINIC CLOSER</span>
       <h1 style="font-size: clamp(2.2rem, 4vw, 3.4rem); margin-bottom: 1rem;">
-        Espejo de IA en Cabina & <i>Ficha Digital en PDF</i>
+        Espejo de IA en Cabina: <i>Software iPad & Plan PDF</i>
       </h1>
       <p style="font-size: 1.1rem;">
-        La tecnología visual en iPad que derriba el miedo a los inyectables durante la consulta médica y genera al instante un Plan Estético Oficial en PDF enviado al WhatsApp de la paciente con la imagen proyectada.
+        Simulación interactiva de la aplicación clínica en iPad que utiliza la Dra. Paola durante la consulta de valoración médica para proyectar resultados, disipar el miedo a los inyectables y generar la Ficha Digital oficial.
       </p>
     </div>
   </section>
@@ -62,63 +135,89 @@
   <section class="section">
     <div class="container">
       
-      <!-- DEMOSTRACIÓN DE LAS 3 FASES DEL ROSTRO -->
-      <div style="text-align: center; margin-bottom: 3rem;">
-        <span class="sub-badge">ANÁLISIS EN 3 FASES DE CABINA</span>
-        <h2 style="font-size: 2rem;">Del Diagnóstico Facial a la Simulación Ética</h2>
-      </div>
-
-      <div class="grid-3" style="margin-bottom: 4rem;">
-        <!-- FASE 1: antes.jpg -->
-        <div style="background: var(--color-white); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); border: 1px solid var(--color-border-subtle);">
-          <img src="assets/images/antes.jpg" style="width: 100%; height: 320px; object-fit: cover; object-position: top center;" alt="Rostro Base">
-          <div style="padding: 1.5rem;">
-            <span style="font-size: 0.72rem; font-weight: 800; color: var(--color-accent-gold); text-transform: uppercase;">Fase 1</span>
-            <h3 style="font-size: 1.2rem; margin: 0.35rem 0;">1. Captura de Rostro Base</h3>
-            <p style="font-size: 0.88rem;">Fotografía clínica de alta resolución tomada en cabina con el iPad Pro de la Dra. Paola bajo luz médica calibrada.</p>
+      <!-- IPAD PRO CLINICAL SOFTWARE SIMULATION -->
+      <div class="ipad-frame">
+        <div class="ipad-topbar">
+          <div>
+            <span style="color:#C5A880; font-weight:700;">AestheticMirror OS v3.2</span> • IPS Dra. Paola Pabón (Sede Yumbo)
+          </div>
+          <div>
+            <span style="color:#10B981;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C5A880" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><polyline points="20 6 9 17 4 12"></polyline></svg> Cámara Calibrada</span> • Base de Datos Conectada
           </div>
         </div>
 
-        <!-- FASE 2: analisis.jpg -->
-        <div style="background: var(--color-white); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); border: 1px solid var(--color-border-subtle);">
-          <img src="assets/images/analisis.jpg" style="width: 100%; height: 320px; object-fit: cover; object-position: top center;" alt="Análisis Antes">
-          <div style="padding: 1.5rem;">
-            <span style="font-size: 0.72rem; font-weight: 800; color: var(--color-primary); text-transform: uppercase;">Fase 2</span>
-            <h3 style="font-size: 1.2rem; margin: 0.35rem 0;">2. Análisis Anatómico (Antes)</h3>
-            <p style="font-size: 0.88rem;">Detección por IA de pérdida de soporte en pómulos, asimetrías del arco de cupido y líneas de tensión en tercio superior.</p>
+        <div class="ipad-content">
+          <!-- SIDEBAR FORMULARIO CLÍNICO -->
+          <div class="ipad-sidebar">
+            <div>
+              <div style="font-size:0.72rem; color:var(--color-accent-gold); font-weight:800; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.75rem;">
+                Expediente Clínico en Cabina
+              </div>
+              
+              <label style="font-size:0.75rem; color:#A5B4B6; display:block; margin-bottom:0.25rem;">Nombre del Paciente:</label>
+              <input id="patient-name" type="text" value="Carolina Mendoza Ospina" class="app-input">
+
+              <label style="font-size:0.75rem; color:#A5B4B6; display:block; margin-bottom:0.25rem;">Edad Biológica:</label>
+              <input id="patient-age" type="text" value="36 años" class="app-input">
+
+              <label style="font-size:0.75rem; color:#A5B4B6; display:block; margin-bottom:0.25rem;">Protocolo Prioritario:</label>
+              <select id="patient-protocol" class="app-input" style="cursor:pointer;">
+                <option value="Bioestimulación Sculptra® + Baby Botox">Bioestimulación Sculptra® + Baby Botox</option>
+                <option value="Armonización Labios Haute Couture">Armonización Labios Haute Couture</option>
+                <option value="Radiesse® Contorno & Cuello">Radiesse® Contorno & Cuello</option>
+              </select>
+
+              <label style="font-size:0.75rem; color:#A5B4B6; display:block; margin-bottom:0.25rem;">Vectores de Ajuste:</label>
+              <div style="font-size:0.8rem; color:#E5E7EB; line-height:1.7; margin-bottom:1.5rem;">
+                <div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C5A880" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><polyline points="20 6 9 17 4 12"></polyline></svg> Tercio superior (relajación frontal)</div>
+                <div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C5A880" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><polyline points="20 6 9 17 4 12"></polyline></svg> Soporte pómulo medio (neocolagénesis)</div>
+                <div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C5A880" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><polyline points="20 6 9 17 4 12"></polyline></svg> Arco de cupido (perfilado sutil)</div>
+              </div>
+            </div>
+
+            <div>
+              <button onclick="triggerSimulation()" class="btn btn-gold" style="width:100%; font-size:0.85rem; padding:0.85rem 1rem; margin-bottom:0.75rem;">
+                ⚡ Procesar Escaneo & Sincronizar
+              </button>
+              <div id="sync-status" style="font-size:0.72rem; color:#10B981; text-align:center;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C5A880" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><polyline points="20 6 9 17 4 12"></polyline></svg> Sincronizado con Servidor IPS Paola Pabón
+              </div>
+            </div>
+          </div>
+
+          <!-- VIEWPORT VISUAL CON LAS 3 FASES REALES -->
+          <div class="ipad-viewport">
+            <!-- TABS SUPERIORES DEL VISOR -->
+            <div style="display:flex; gap:0.5rem; margin-bottom:1.25rem; flex-wrap:wrap; justify-content:center;">
+              <button id="btn-fase-1" onclick="showPhase(1)" class="phase-tab-btn active">1. Rostro Base</button>
+              <button id="btn-fase-2" onclick="showPhase(2)" class="phase-tab-btn">2. Malla Anatómica</button>
+              <button id="btn-fase-3" onclick="showPhase(3)" class="phase-tab-btn">3. Proyección Después</button>
+            </div>
+
+            <!-- CONTENEDOR DE IMAGEN DEL ROSTRO -->
+            <div style="position:relative; width:100%; max-width:380px; height:420px; border-radius:1rem; overflow:hidden; border:2px solid rgba(197, 168, 128, 0.4); box-shadow:0 10px 30px rgba(0,0,0,0.5);">
+              <img id="viewport-img" src="assets/images/antes.jpg" alt="Simulación Facial" style="width:100%; height:100%; object-fit:cover; object-position:top center; display:block;">
+              
+              <div id="viewport-badge" style="position:absolute; bottom:12px; left:12px; background:rgba(7,44,51,0.9); backdrop-filter:blur(8px); color:white; padding:0.4rem 0.85rem; border-radius:9999px; font-size:0.75rem; font-weight:700; border:1px solid rgba(197, 168, 128, 0.3);">
+                Fase 1: Fotografía Base de Paciente
+              </div>
+            </div>
+
+            <!-- BOTÓN DIRECTO AL PDF -->
+            <div style="margin-top:1.5rem; width:100%; max-width:380px;">
+              <button onclick="openPdfModal()" class="btn btn-outline" style="width:100%; border-color:var(--color-accent-gold); color:var(--color-accent-gold); font-size:0.85rem; padding:0.75rem 1rem;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg> Abrir Ficha Clínica Oficial en PDF
+              </button>
+            </div>
           </div>
         </div>
-
-        <!-- FASE 3: despues.jpg -->
-        <div style="background: var(--color-white); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); border: 1px solid var(--color-border-subtle);">
-          <img src="assets/images/despues.jpg" style="width: 100%; height: 320px; object-fit: cover; object-position: top center;" alt="Proyección Después">
-          <div style="padding: 1.5rem;">
-            <span style="font-size: 0.72rem; font-weight: 800; color: #10B981; text-transform: uppercase;">Fase 3</span>
-            <h3 style="font-size: 1.2rem; margin: 0.35rem 0;">3. Simulación Ética (Después)</h3>
-            <p style="font-size: 0.88rem;">Previsualización del resultado con volumen controlado («Armonizarte, no cambiarte») para que la paciente decida con certeza.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- BOTÓN GENERADOR DE PDF -->
-      <div style="background: var(--color-sand); border-radius: var(--radius-lg); padding: 3.5rem 2.5rem; text-align: center; border: 1px solid var(--color-border); max-width: 900px; margin: 0 auto;">
-        <span class="sub-badge">EL ENTREGABLE MEMORABLE EN CABINA</span>
-        <h2 style="font-size: 2.2rem; margin-bottom: 1rem;">
-          Generador de Plan Clínico Estético en PDF
-        </h2>
-        <p style="font-size: 1.05rem; max-width: 650px; margin: 0 auto 2rem;">
-          Al finalizar la consulta, el sistema genera automáticamente la ficha médica con los insumos prescritos, las fotos del análisis y los cuidados posteriores.
-        </p>
-        <button onclick="openPdfModal()" class="btn btn-gold" style="font-size: 1rem; padding: 1rem 2.5rem;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg> Generar y Ver Ficha Clínica de Prueba (con Fotos) <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </button>
       </div>
 
     </div>
   </section>
 
-  <!-- MODAL / VISOR DE FICHA PDF CLÍNICA CON FOTOS REALES -->
-  <div id="pdf-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 2000; align-items: center; justify-content: center; padding: 1.5rem;">
+  <!-- MODAL VISOR DE FICHA PDF CLÍNICA CON FOTOS REALES -->
+  <div id="pdf-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 2000; align-items: center; justify-content: center; padding: 1.5rem;">
     <div style="background: white; border-radius: var(--radius-md); max-width: 720px; width: 100%; max-height: 92vh; overflow-y: auto; padding: 2.5rem; position: relative; box-shadow: var(--shadow-lift);">
       
       <button onclick="closePdfModal()" style="position: absolute; top: 1.25rem; right: 1.25rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--color-text-muted);">✕</button>
@@ -136,11 +235,11 @@
         </div>
       </div>
 
-      <!-- DATOS DE PACIENTE -->
+      <!-- DATOS DINÁMICOS DE PACIENTE -->
       <div style="background: var(--color-sand); padding: 1rem 1.25rem; border-radius: var(--radius-sm); margin-bottom: 1.5rem; font-size: 0.85rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
-        <div><strong>Paciente:</strong> Carolina Mendoza Ospina</div>
-        <div><strong>Edad:</strong> 36 años</div>
-        <div><strong>Objetivo:</strong> Bioestimulación & Firmeza Facial</div>
+        <div><strong>Paciente:</strong> <span id="pdf-patient-name">Carolina Mendoza Ospina</span></div>
+        <div><strong>Edad:</strong> <span id="pdf-patient-age">36 años</span></div>
+        <div><strong>Objetivo:</strong> <span id="pdf-patient-protocol">Bioestimulación Sculptra® + Baby Botox</span></div>
         <div><strong>Médica Tratante:</strong> Dra. Paola Andrea Pabón</div>
       </div>
 
@@ -194,7 +293,7 @@
         </p>
       </div>
 
-      <div style="display: flex; justify-content: space-between; align-items: center;">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
         <button onclick="window.print()" class="btn btn-primary-dark" style="font-size: 0.85rem; padding: 0.6rem 1.5rem;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg> Imprimir / Guardar como PDF
         </button>
@@ -267,9 +366,45 @@
 
 
   <script>
+    function showPhase(num) {
+      document.querySelectorAll('.phase-tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('btn-fase-' + num).classList.add('active');
+
+      const img = document.getElementById('viewport-img');
+      const badge = document.getElementById('viewport-badge');
+
+      if (num === 1) {
+        img.src = 'assets/images/antes.jpg';
+        badge.innerText = 'Fase 1: Fotografía Base de Paciente';
+      } else if (num === 2) {
+        img.src = 'assets/images/analisis.jpg';
+        badge.innerText = 'Fase 2: Mapeo Tridimensional con Malla de Vectores';
+      } else if (num === 3) {
+        img.src = 'assets/images/despues.jpg';
+        badge.innerText = 'Fase 3: Proyección Armonizada (Resultado Sutil)';
+      }
+    }
+
+    function triggerSimulation() {
+      const status = document.getElementById('sync-status');
+      status.innerText = "Sincronizando con Servidor Clínico...";
+      status.style.color = "#C5A880";
+
+      showPhase(2);
+      setTimeout(() => {
+        showPhase(3);
+        status.innerHTML = "<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C5A880" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><polyline points="20 6 9 17 4 12"></polyline></svg> Simulación Completada & Sincronizada con IPS Paola Pabón";
+        status.style.color = "#10B981";
+      }, 1000);
+    }
+
     function openPdfModal() {
+      document.getElementById('pdf-patient-name').innerText = document.getElementById('patient-name').value;
+      document.getElementById('pdf-patient-age').innerText = document.getElementById('patient-age').value;
+      document.getElementById('pdf-patient-protocol').innerText = document.getElementById('patient-protocol').value;
       document.getElementById('pdf-modal').style.display = 'flex';
     }
+
     function closePdfModal() {
       document.getElementById('pdf-modal').style.display = 'none';
     }

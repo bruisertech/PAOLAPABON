@@ -19,7 +19,7 @@
         <span>IPS PAOLA PABÓN • SEDE YUMBO: CALLE 5 #7-24, PUERTO ISAACS</span>
       </div>
       <div>
-        <span>Citas Privadas: <a href="https://wa.me/573053862774?text=Hola%20Dra.%20Paola%20Pabón,%20deseo%20solicitar%20una%20cita%20de%20valoración" target="_blank">+57 305 386 2774</a></span>
+        <span>Citas Privadas: <a href="https://instagram.com/paolapabonestetica/Hola%20Dra.%20Paola%20Pabón,%20deseo%20solicitar%20una%20cita%20de%20valoración" target="_blank">+57 </a></span>
       </div>
     </div>
   </div>
@@ -80,13 +80,13 @@
 
           <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem;">
             <button onclick="sendScenario('sculptra')" class="btn btn-outline" style="text-align: left; justify-content: flex-start; padding: 0.85rem 1.25rem; font-size: 0.85rem;">
-              💎 <strong>Escenario 1:</strong> Consultar Jornada de Sculptra® ($999.000 con regalo)
+               <strong>Escenario 1:</strong> Consultar Jornada de Sculptra® ($999.000 con regalo)
             </button>
             <button onclick="sendScenario('horarios')" class="btn btn-outline" style="text-align: left; justify-content: flex-start; padding: 0.85rem 1.25rem; font-size: 0.85rem;">
-              📅 <strong>Escenario 2:</strong> Disponibilidad de citas y ubicación en Yumbo
+               <strong>Escenario 2:</strong> Disponibilidad de citas y ubicación en Yumbo
             </button>
             <button onclick="sendScenario('miedo')" class="btn btn-outline" style="text-align: left; justify-content: flex-start; padding: 0.85rem 1.25rem; font-size: 0.85rem;">
-              🌸 <strong>Escenario 3:</strong> Manejo de miedo al dolor o a quedar exagerada
+               <strong>Escenario 3:</strong> Manejo de miedo al dolor o a quedar exagerada
             </button>
           </div>
 
@@ -117,13 +117,13 @@
 
             <div id="chat-box" class="chat-window">
               <div class="bubble bubble-bot">
-                ¡Hola! ✨ Te doy la bienvenida a la IPS Dra. Paola Pabón (Estética & Spa en Yumbo). ¿En qué podemos consentirte y armonizar tu piel hoy?
+                ¡Hola!  Te doy la bienvenida a la IPS Dra. Paola Pabón (Estética & Spa en Yumbo). ¿En qué podemos consentirte y armonizar tu piel hoy?
               </div>
             </div>
 
             <div class="chat-input-bar">
               <input id="user-input" type="text" placeholder="Escribe una pregunta o duda..." onkeypress="handleKey(event)">
-              <button onclick="handleSend()">➔</button>
+              <button onclick="handleSend()">&rarr;</button>
             </div>
           </div>
         </div>
@@ -176,7 +176,7 @@
             Yumbo, Valle del Cauca, Colombia
           </p>
           <p style="margin-top: 0.75rem;">
-            <strong>WhatsApp VIP:</strong> <a href="https://wa.me/573053862774" style="color:var(--color-accent-gold);">+57 305 386 2774</a>
+            <strong>WhatsApp VIP:</strong> <a href="https://www.instagram.com/paolapabonestetica/" style="color:var(--color-accent-gold);">+57 </a>
           </p>
         </div>
       </div>
@@ -218,7 +218,7 @@
       if (type === 'sculptra') {
         addMessage("Hola, vi una promoción de Sculptra, ¿cuánto cuesta y qué incluye?", true);
         setTimeout(() => {
-          addMessage("¡Hola! 🌸 Te cuento: actualmente tenemos la Jornada Especial de Sculptra® (Ácido Poli-L-Láctico original de Galderma) a un valor de $999.000 COP por vial. Además, incluye de obsequio una sesión de Mesoterapia Biorevitalizante NCTF para darle luminosidad inmediata a tu piel. ¿Deseas que revisemos los cupos de esta semana con la Dra. Paola?", false);
+          addMessage("¡Hola!  Te cuento: actualmente tenemos la Jornada Especial de Sculptra® (Ácido Poli-L-Láctico original de Galderma) a un valor de $999.000 COP por vial. Además, incluye de obsequio una sesión de Mesoterapia Biorevitalizante NCTF para darle luminosidad inmediata a tu piel. ¿Deseas que revisemos los cupos de esta semana con la Dra. Paola?", false);
         }, 600);
       } else if (type === 'horarios') {
         addMessage("¿En dónde están ubicados en Yumbo y qué días atienden?", true);
@@ -228,7 +228,7 @@
       } else if (type === 'miedo') {
         addMessage("Quiero hacerme labios pero me da miedo quedar con la boca muy inflada y falsa...", true);
         setTimeout(() => {
-          addMessage("Es completamente comprensible tu inquietud 🤍. La filosofía médica de la Dra. Paola es precisamente «Armonizarte, no cambiarte». En labios aplicamos Ácido Hialurónico reticulado respetando las proporciones áureas de tu rostro, buscando hidratar y definir el contorno de forma imperceptible. Además, en tu valoración en cabina usamos el Espejo de IA para previsualizar el cambio antes de colocar la primera gota. ¿Te agendamos para que conozcas a la doctora?", false);
+          addMessage("Es completamente comprensible tu inquietud . La filosofía médica de la Dra. Paola es precisamente «Armonizarte, no cambiarte». En labios aplicamos Ácido Hialurónico reticulado respetando las proporciones áureas de tu rostro, buscando hidratar y definir el contorno de forma imperceptible. Además, en tu valoración en cabina usamos el Espejo de IA para previsualizar el cambio antes de colocar la primera gota. ¿Te agendamos para que conozcas a la doctora?", false);
         }, 600);
       }
     }
@@ -266,7 +266,7 @@
       } catch (err) {
         const ind = document.getElementById('typing-indicator');
         if (ind) ind.remove();
-        addMessage("Con gusto te atendemos en la Sede Yumbo. También puedes escribirnos a nuestro WhatsApp oficial +57 305 386 2774.", false);
+        addMessage("Con gusto te atendemos en la Sede Yumbo. También puedes escribirnos a nuestro WhatsApp oficial +57 .", false);
       }
     }
     function handleKey(e) {
