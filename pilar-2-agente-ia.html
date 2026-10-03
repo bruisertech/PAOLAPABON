@@ -108,7 +108,7 @@
           </div>
 
           <div class="phone-footer">
-            <input type="text" id="user-input" placeholder="Escribe tu consulta o di 'agendar'..." onkeypress="handleKey(event)">
+            <input type="text" id="user-input" placeholder="Escribe tu consulta o di 'agendar'..." onkeydown="if(event.key==='Enter') handleSend();" onkeypress="if(event.key==='Enter') handleSend();">
             <button onclick="handleSend()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg></button>
           </div>
         </div>
@@ -179,7 +179,15 @@
   </footer>
 
   <script>
-    let chatState = 'normal';
+    let chatHistory = [];
+    let userContext = {
+      name: '',
+      age: null,
+      concerns: [],
+      fears: [],
+      awaitingBooking: false
+    };
+    let isProcessing = false;
 
     function addMessage(text, isUser) {
       const box = document.getElementById('chat-box');
@@ -188,130 +196,287 @@
       b.innerHTML = text;
       box.appendChild(b);
       box.scrollTop = box.scrollHeight;
+      chatHistory.push({ role: isUser ? 'user' : 'assistant', text: text });
+    }
+
+    function removeAllTypingIndicators() {
+      const indicators = document.querySelectorAll('.typing-bubble');
+      indicators.forEach(el => el.remove());
+      const old = document.getElementById('typing-indicator');
+      if (old) old.remove();
+    }
+
+    function showTypingIndicator(customText) {
+      removeAllTypingIndicators();
+      const box = document.getElementById('chat-box');
+      const indicator = document.createElement('div');
+      indicator.className = 'bubble bubble-bot typing-bubble';
+      indicator.id = 'typing-indicator';
+      indicator.innerHTML = '<span style="display:inline-flex; align-items:center; gap:6px;"><span id="typing-status-text">' + (customText || 'AURA está analizando tu consulta...') + '</span> <span style="opacity:0.8;">✨</span></span>';
+      box.appendChild(indicator);
+      box.scrollTop = box.scrollHeight;
+    }
+
+    function updateTypingIndicator(newText) {
+      const st = document.getElementById('typing-status-text');
+      if (st) {
+        st.innerText = newText;
+      }
     }
 
     function sendPredefined(type) {
+      if (isProcessing) return;
       if (type === 'sculptra') {
-        processMessage("¿Cuánto cuesta el Sculptra y qué beneficios tiene?");
+        processMessage("¿Cuánto cuesta el Sculptra y qué beneficios tiene para la flacidez?");
       } else if (type === 'botox') {
-        processMessage("¿Tienen cupos para Baby Botox y cómo funciona?");
+        processMessage("¿Tienen cupos para Baby Botox y cómo funciona para las arrugas?");
       } else if (type === 'miedo') {
-        processMessage("Quiero hacerme labios pero me da miedo quedar con la boca muy inflada y falsa...");
+        processMessage("Quiero hacerme labios pero me da miedo quedar con la boca muy inflada o deforme...");
       } else if (type === 'agendar') {
-        processMessage("Quiero agendar mi cita de valoración con la Dra. Paola");
+        processMessage("Quiero agendar mi cita de valoración con la Dra. Paola en Yumbo");
       }
     }
 
-    function generateSmartClinicalResponse(input) {
-      const lower = input.toLowerCase().trim();
+    // LLAMADA AL PROXY CLOUDFLARE (GEMINI 1.5 FLASH / VERTEX AI)
+    async function callCloudflareWorker(userText) {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 12000);
 
-      // INTENCIÓN DE AGENDAMIENTO / AFIRMACIÓN DIRECTA ("si", "agendar", "cita", "separar", "quiero cita")
-      if (lower === 'si' || lower === 'sí' || lower === 'agendar' || lower.includes('agendar') || lower.includes('cita') || lower.includes('separar') || lower.includes('quiero agendar') || lower.includes('apartar')) {
-        chatState = 'awaiting_booking_info';
-        return "¡Excelente decisión! Con gusto coordinamos tu valoración médica personalizada en nuestra Sede Yumbo (Calle 5 #7-24, Puerto Isaacs):<br><br>" +
-          "• <strong>¿Qué día de esta semana te queda más cómodo</strong> (ej. Jueves o Viernes en la mañana o tarde)?<br>" +
-          "• <strong>¿Cuál es tu nombre completo</strong> para ingresar tu ficha en cabina?<br><br>" +
-          "Si prefieres confirmar de inmediato por WhatsApp con nuestra recepcionista, toca aquí: <br>" +
-          "<a href='https://wa.me/573053862774?text=Hola%20Dra.%20Paola%20Pab%C3%B3n,%20deseo%20agendar%20mi%20cita%20de%20valoraci%C3%B3n%20en%20Yumbo' target='_blank' class='btn btn-gold' style='display:inline-block; padding:0.4rem 0.9rem; font-size:0.78rem; margin-top:0.6rem; text-decoration:none;'>Agendar por WhatsApp Oficial</a>";
-      }
-
-      // RESPUESTA TRAS HABER PEDIDO DATOS DE CITA (Usuario envía día o nombre)
-      if (chatState === 'awaiting_booking_info') {
-        chatState = 'normal';
-        return "¡Anotado perfectamente! Ya he pre-registrado tu solicitud para la valoración médica con la Dra. Paola en la Sede Yumbo.<br><br>" +
-          "Para asignarte el horario exacto y apartar el espacio de cabina sin demoras, por favor finaliza tu confirmación con un toque aquí: <br>" +
-          "<a href='https://wa.me/573053862774?text=Hola%20Dra.%20Paola%20Pab%C3%B3n,%20mi%20nombre%20es%20" + encodeURIComponent(input) + "%20y%20deseo%20confirmar%20mi%20cita%20de%20valoraci%C3%B3n' target='_blank' class='btn btn-gold' style='display:inline-block; padding:0.4rem 0.9rem; font-size:0.78rem; margin-top:0.6rem; text-decoration:none;'>Confirmar Espacio en WhatsApp</a>. ¡Será un gusto atenderte!";
-      }
-
-      // PRECIOS Y COSTOS
-      if (lower.includes('precio') || lower.includes('costo') || lower.includes('cuanto') || lower.includes('valor') || lower.includes('promocion')) {
-        return "En la IPS Dra. Paola Pabón manejamos protocolos médicos de alta gama con respaldo farmacológico:<br><br>" +
-          "• <strong>Jornada Especial Sculptra®:</strong> $999.000 COP por vial (incluye de obsequio una sesión de Mesoterapia Biorevitalizante NCTF).<br>" +
-          "• <strong>Baby Botox / Toxina Botulínica:</strong> Dosis personalizada según tu fuerza muscular, con valoración y retoque a los 15 días incluido.<br>" +
-          "• <strong>Labios Haute Couture:</strong> Ácido hialurónico reticulado para hidratación y perfilado sutil.<br><br>" +
-          "¿Deseas que revisemos la disponibilidad de la Dra. Paola para tu valoración médica en Yumbo?";
-      }
-
-      // BOTOX Y ARRUGAS
-      if (lower.includes('botox') || lower.includes('arruga') || lower.includes('frente') || lower.includes('patas de gallo') || lower.includes('entrecejo')) {
-        return "Para las líneas de expresión (frente, entrecejo y patas de gallo), la Dra. Paola aplica Toxina Botulínica con técnica Baby Botox. Suaviza la contracción muscular para un rostro descansado y fresco, <strong>sin congelar la expresión ni perder tu naturalidad</strong>. Incluye control médico y retoque a los 15 días.<br><br>¿Te gustaría agendar tu valoración esta semana?";
-      }
-
-      // SCULPTRA Y COLÁGENO
-      if (lower.includes('sculptra') || lower.includes('colageno') || lower.includes('colágeno') || lower.includes('flacidez')) {
-        return "Sculptra® es el bioestimulador de colágeno de referencia mundial (Ácido Poli-L-Láctico original de Galderma). No aporta volumen exagerado, sino que activa tus propios fibroblastos para generar colágeno nuevo de forma progresiva, devolviendo tensión y firmeza a las mejillas y contorno. Actualmente tenemos la <strong>Jornada Especial a $999.000 COP/vial</strong> con Mesoterapia NCTF de regalo.<br><br>¿Deseas apartar tu vial antes de que se agoten los cupos de la jornada?";
-      }
-
-      // LABIOS Y MIEDO A RESULTADOS EXAGERADOS
-      if (lower.includes('labio') || lower.includes('boca') || lower.includes('miedo') || lower.includes('falsa') || lower.includes('inflad')) {
-        return "Es completamente comprensible tu inquietud 🤍. La filosofía médica de la Dra. Paola es precisamente <em>«Armonizarte, no cambiarte»</em>. En labios aplicamos Ácido Hialurónico reticulado respetando las proporciones de tu rostro, buscando hidratar y definir el contorno de forma imperceptible (cero boca de pato). Además, en cabina usamos el <strong>Espejo de IA en iPad</strong> para previsualizar el cambio antes de colocar la primera gota.<br><br>¿Te gustaría agendar una cita para conocer a la doctora?";
-      }
-
-      // RADIESSE Y CONTORNO
-      if (lower.includes('radiesse') || lower.includes('mandibula') || lower.includes('mandíbula') || lower.includes('cuello')) {
-        return "Para definir el ángulo mandibular y tensar el cuello, la Dra. Paola utiliza Radiesse® (hidroxiapatita de calcio). Logra un efecto lifting inmediato y estimula fibras de elastina y colágeno a mediano plazo, perfilando el óvalo facial con total elegancia.<br><br>¿Deseas que valoremos tu contorno mandibular en la Sede Yumbo?";
-      }
-
-      // DOLOR Y ANESTESIA
-      if (lower.includes('dolor') || lower.includes('duele') || lower.includes('anestesia')) {
-        return "¡Cero dolor! Todos los procedimientos los realiza la Dra. Paola aplicando anestesia tópica dermatológica de alta potencia 20 minutos antes y, cuando se requiere, anestesia infiltrativa local o micro-cánulas de punta roma atraumáticas. La experiencia en cabina es muy cómoda y relajante.<br><br>¿Te gustaría agendar tu cita?";
-      }
-
-      // UBICACIÓN Y HORARIOS
-      if (lower.includes('donde') || lower.includes('ubicac') || lower.includes('direccion') || lower.includes('dirección') || lower.includes('yumbo') || lower.includes('horario')) {
-        return "Estamos ubicados en la <strong>Calle 5 #7-24, Barrio Puerto Isaacs, en Yumbo (Valle del Cauca)</strong>, a pocos minutos del Parque Belalcázar. Atendemos de lunes a sábado con cita previa para garantizarte privacidad total y sin salas de espera congestionadas.<br><br>¿Te gustaría apartar tu valoración médica para esta semana?";
-      }
-
-      // SALUDOS O CONSULTAS GENERALES
-      return "Con gusto te orientamos con la Dra. Paola Pabón en nuestra Sede Yumbo. ¿Te gustaría consultar sobre algún tratamiento en particular (Sculptra, Baby Botox, Labios) o deseas agendar tu valoración médica en cabina?";
-    }
-
-    async function processMessage(userText) {
-      addMessage(userText, true);
-
-      const box = document.getElementById('chat-box');
-      const typingIndicator = document.createElement('div');
-      typingIndicator.className = 'bubble bubble-bot';
-      typingIndicator.id = 'typing-indicator';
-      typingIndicator.innerText = 'Consultando protocolos clínicos...';
-      box.appendChild(typingIndicator);
-      box.scrollTop = box.scrollHeight;
-
-      let replyFound = false;
+      const timer1 = setTimeout(() => updateTypingIndicator('AURA está evaluando tus requerimientos clínicos...'), 2500);
+      const timer2 = setTimeout(() => updateTypingIndicator('Sintetizando recomendación médica con la Dra. Paola...'), 5500);
 
       try {
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 4000);
+        const payload = {
+          message: userText,
+          prompt: userText,
+          query: userText,
+          history: chatHistory.slice(-6)
+        };
 
         const res = await fetch('https://paola-ai-proxy.bruiserapi.workers.dev', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: userText }),
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload),
           signal: controller.signal
         });
+
         clearTimeout(timeoutId);
+        clearTimeout(timer1);
+        clearTimeout(timer2);
 
-        const data = await res.json();
-        const reply = data.reply || data.response || data.text || data.message || 
-                      (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts[0] && data.candidates[0].content.parts[0].text);
-
-        if (reply && reply.trim().length > 0) {
-          const ind = document.getElementById('typing-indicator');
-          if (ind) ind.remove();
-          addMessage(reply, false);
-          replyFound = true;
+        if (!res.ok) {
+          throw new Error('Worker status: ' + res.status);
         }
+
+        const raw = await res.text();
+        let reply = '';
+        try {
+          const data = JSON.parse(raw);
+          reply = data.reply || data.response || data.text || data.output || data.message ||
+            (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0] && data.candidates[0].content.parts[0].text);
+        } catch (jsonErr) {
+          if (raw && !raw.includes('<html') && !raw.includes('<!DOCTYPE')) {
+            reply = raw;
+          }
+        }
+
+        if (reply && typeof reply === 'string' && reply.trim().length > 0) {
+          return reply.trim();
+        }
+        throw new Error('Empty reply from worker');
       } catch (err) {
-        // En caso de fallo o timeout de red, entra el motor inteligente local
+        clearTimeout(timeoutId);
+        clearTimeout(timer1);
+        clearTimeout(timer2);
+        throw err;
+      }
+    }
+
+    // MOTOR CONVERSACIONAL CLÍNICO DINÁMICO DE ALTA PRECISIÓN
+    function generateConversationalClinicalResponse(input) {
+      const lower = input.toLowerCase().trim();
+
+      // 1. Detección y almacenamiento de memoria contextual
+      const nameMatch = input.match(/(?:me llamo|mi nombre es|soy)\s+([a-zA-ZáéíóúñÁÉÍÓÚÑ]+)/i);
+      if (nameMatch && nameMatch[1]) {
+        userContext.name = nameMatch[1].charAt(0).toUpperCase() + nameMatch[1].slice(1).toLowerCase();
       }
 
-      if (!replyFound) {
-        setTimeout(() => {
-          const ind = document.getElementById('typing-indicator');
-          if (ind) ind.remove();
-          const smartReply = generateSmartClinicalResponse(userText);
-          addMessage(smartReply, false);
-        }, 500);
+      const ageMatch = lower.match(/(\d{2})\s*(?:años|anos)?/);
+      if (ageMatch) {
+        const val = parseInt(ageMatch[1], 10);
+        if (val >= 18 && val <= 95) {
+          userContext.age = val;
+        }
+      }
+
+      // Detección de inquietudes clínicas
+      if (/flacidez|caida|caída|descolg|mejilla|colageno|colágeno|firmeza/.test(lower)) {
+        if (!userContext.concerns.includes('flacidez')) userContext.concerns.push('flacidez');
+      }
+      if (/arruga|frente|patas de gallo|entrecejo|lineas|líneas|pata de gallo/.test(lower)) {
+        if (!userContext.concerns.includes('arrugas')) userContext.concerns.push('arrugas');
+      }
+      if (/labio|boca|perfilado|arco de cupido|volumen labial/.test(lower)) {
+        if (!userContext.concerns.includes('labios')) userContext.concerns.push('labios');
+      }
+      if (/mancha|melasma|tono|pigment|pecas|opaca|apagada/.test(lower)) {
+        if (!userContext.concerns.includes('manchas')) userContext.concerns.push('manchas');
+      }
+      if (/ojera|mirada cansada|bolsas/.test(lower)) {
+        if (!userContext.concerns.includes('ojeras')) userContext.concerns.push('ojeras');
+      }
+      if (/mandibula|mandíbula|papada|cuello|perfil/.test(lower)) {
+        if (!userContext.concerns.includes('mandibula')) userContext.concerns.push('mandibula');
+      }
+
+      // Detección de miedos y objeciones
+      if (/miedo|temor|dolor|duele|aguja|agujas|tiesa|congelad|pato|deforme|artificial|exagerad/.test(lower)) {
+        if (!userContext.fears.includes('miedo_o_dolor')) userContext.fears.push('miedo_o_dolor');
+      }
+
+      const userNamePrefix = userContext.name ? userContext.name + ', ' : '';
+
+      // 2. REGLA DE SEGURIDAD (Temas completamente ajenos)
+      const offTopics = ['futbol', 'fútbol', 'politica', 'política', 'bitcoin', 'cripto', 'clima', 'receta', 'cocinar', 'programar', 'codigo', 'código', 'tarea', 'examen', 'pelicula', 'película'];
+      if (offTopics.some(w => lower.includes(w))) {
+        return userNamePrefix + 'como asistente clínica de la IPS Dra. Paola Pabón en Yumbo, mi acompañamiento se concentra exclusivamente en la salud de tu piel, estética médica y armonización facial. Con muchísimo gusto puedo orientarte sobre procedimientos como Sculptra®, Baby Botox, armonización de labios o coordinar tu cita en nuestra sede. ¿En qué aspecto de tu piel te gustaría enfocarte hoy?<br><br>' +
+          "<a href='https://wa.me/573053862774?text=Hola%20Dra.%20Paola%20Pab%C3%B3n,%20deseo%20asesor%C3%ADa%20personalizada' target='_blank' class='btn btn-gold' style='display:inline-block; padding:0.4rem 0.9rem; font-size:0.78rem; margin-top:0.4rem; text-decoration:none;'>Consultar por WhatsApp Oficial</a>";
+      }
+
+      // 3. INTENCIÓN DE AGENDAR / FECHAS / CONFIRMACIÓN
+      if (/agendar|cita|separar|apartar|valoracion|valoración|turno|disponib|viernes|sabado|sábado|lunes|martes|miercoles|miércoles|jueves|manana|mañana|tarde/.test(lower) || ['si', 'sí', 'claro', 'por favor', 'dale', 'quiero cita', 'quiero agendar'].includes(lower)) {
+        userContext.awaitingBooking = true;
+        let bookingMsg = '¡Con el mayor gusto, ' + userNamePrefix + 'coordinamos tu espacio en la IPS Paola Pabón! Atendemos de lunes a sábado en nuestra Sede Yumbo (Calle 5 #7-24, Barrio Puerto Isaacs, cerca del Parque Belalcázar).<br><br>' +
+          '• Para apartar tu cita de valoración médica presencial con la Dra. Paola y asegurar que la cabina esté esterilizada y lista para ti, indícanos tu horario preferido.<br><br>' +
+          'Puedes confirmar al instante tocando aquí:<br>' +
+          "<a href='https://wa.me/573053862774?text=Hola%20Dra.%20Paola%20Pab%C3%B3n,%20" + encodeURIComponent((userContext.name ? 'mi nombre es ' + userContext.name + ' y ' : '') + 'deseo agendar mi cita de valoración médica en la Sede Yumbo') + "' target='_blank' class='btn btn-gold' style='display:inline-block; padding:0.45rem 1rem; font-size:0.8rem; margin-top:0.5rem; text-decoration:none;'>Confirmar Cita en WhatsApp Directo (+57 305 386 2774)</a>";
+        return bookingMsg;
+      }
+
+      // 4. PRECIOS Y TARIFAS
+      if (/precio|costo|cuanto|cuánto|valor|tarifa|promocion|promoción|descuento|jornada|paquete/.test(lower)) {
+        return userNamePrefix + 'en la IPS Dra. Paola Pabón promovemos la transparencia médica con insumos originales y registro INVIMA:<br><br>' +
+          '• <strong>Jornada Especial Sculptra®:</strong> 99.000 COP por vial (incluye de cortesía una sesión completa de Mesoterapia Biorrevitalizante NCTF 135HA de Fillmed).<br>' +
+          '• <strong>Baby Botox / Toxina Botulínica:</strong> Dosis personalizada según tu patrón muscular, con valoración médica y cita de retoque gratuito a los 15 días incluida.<br>' +
+          '• <strong>Labios Haute Couture:</strong> Ácido hialurónico reticulado suizo para perfilado e hidratación profunda.<br>' +
+          '• <strong>Faciales Médicos Casmara y NCTF:</strong> Desde 60.000 COP para renovación celular profunda.<br><br>' +
+          'Durante la valoración presencial en cabina, la doctora examina tu piel con el simulador en iPad para definir el número exacto de viales o unidades. ¿Deseas que revisemos disponibilidad para ti en Yumbo?<br>' +
+          "<a href='https://wa.me/573053862774?text=Hola%20Dra.%20Paola%20Pab%C3%B3n,%20deseo%20conocer%20disponibilidad%20de%20tarifas' target='_blank' class='btn btn-gold' style='display:inline-block; padding:0.4rem 0.9rem; font-size:0.78rem; margin-top:0.4rem; text-decoration:none;'>Consultar Disponibilidad en WhatsApp</a>";
+      }
+
+      // 5. CONSULTA COMBINADA O ESPECÍFICA DE FLACIDEZ / SCULPTRA / COLÁGENO
+      if (/flacidez|colageno|colágeno|sculptra|mejilla|descolg|firmeza/.test(lower)) {
+        let ageAdvice = '';
+        if (userContext.age) {
+          if (userContext.age >= 40) {
+            ageAdvice = 'A los ' + userContext.age + ' años, la pérdida natural de colágeno acelera el descolgamiento de las mejillas y la formación de surcos. ';
+          } else {
+            ageAdvice = 'A tus ' + userContext.age + ' años es el momento idóneo para activar tu banco de colágeno y prevenir la caída tisular antes de que se acentúe. ';
+          }
+        }
+        return userNamePrefix + 'para tratar la pérdida de firmeza sin cirugía ni cambios artificiales, el protocolo de elección de la Dra. Paola es <strong>Sculptra®</strong> (Ácido Poli-L-Láctico original de Galderma).<br><br>' +
+          ageAdvice + 'Sculptra® no es un relleno que infle el rostro; actúa como un bioestimulador celular que hace que tus propios fibroblastos generen colágeno tipo I nuevo, devolviendo soporte, turgencia y levantando las mejillas sutilmente.<br><br>' +
+          '• <strong>Jornada Especial:</strong> 99.000 COP por vial con una sesión de Mesoterapia NCTF 135HA de obsequio.<br>' +
+          '• <strong>Aplicación:</strong> Con micro-cánula atraumática 22G y anestesia tópica al 23% para que no sientas ningún dolor.<br><br>' +
+          '¿Te gustaría apartar tu vial de la jornada en Sede Yumbo?<br>' +
+          "<a href='https://wa.me/573053862774?text=Hola%20Dra.%20Paola%20Pab%C3%B3n,%20quiero%20informaci%C3%B3n%20para%20apartar%20mi%20vial%20de%20Sculptra' target='_blank' class='btn btn-gold' style='display:inline-block; padding:0.4rem 0.9rem; font-size:0.78rem; margin-top:0.4rem; text-decoration:none;'>Apartar Vial en WhatsApp</a>";
+      }
+
+      // 6. ARRUGAS, FRENTE, PATAS DE GALLO, BOTOX
+      if (/arruga|botox|baby botox|frente|patas de gallo|entrecejo|lineas|líneas/.test(lower)) {
+        return userNamePrefix + 'para las líneas de expresión en frente, entrecejo y patas de gallo, la Dra. Paola aplica <strong>Baby Botox</strong> con micro-dosis estratégicas. El objetivo es relajar los músculos que fruncen la mirada <strong>sin congelar tu rostro ni perder expresividad</strong>: te verás descansada, fresca y completamente natural.<br><br>' +
+          '• Incluye revisión médica y retoque gratuito a los 15 días para asegurar simetría total.<br>' +
+          '• Los efectos duran de 4 a 6 meses según tu fuerza muscular.<br><br>' +
+          '¿Te gustaría agendar una valoración facial para evaluar tus líneas dinámicas?<br>' +
+          "<a href='https://wa.me/573053862774?text=Hola%20Dra.%20Paola%20Pab%C3%B3n,%20deseo%20agendar%20Baby%20Botox%20con%20retoque%20incluido' target='_blank' class='btn btn-gold' style='display:inline-block; padding:0.4rem 0.9rem; font-size:0.78rem; margin-top:0.4rem; text-decoration:none;'>Agendar Baby Botox en WhatsApp</a>";
+      }
+
+      // 7. LABIOS, MIEDO A BOCA DE PATO O RESULTADOS EXAGERADOS
+      if (/labio|boca|perfilado|hialuronico|hialurónico|pato|inflad|deforme|miedo/.test(lower)) {
+        return userNamePrefix + 'comprendemos profundamente tu inquietud 🤍. En la IPS Dra. Paola Pabón nuestra premisa médica es <em>«Armonizarte, no cambiarte»</em>. En <strong>Labios Haute Couture</strong> trabajamos con Ácido Hialurónico reticulado de pureza suiza respetando las proporciones de tu rostro. Buscamos definir el arco de cupido e hidratar profundamente, <strong>con cero efecto boca de pato o volúmenes exagerados</strong>.<br><br>' +
+          '• En la consulta médica utilizamos el <strong>Espejo de IA en iPad</strong> para previsualizar contigo la proyección exacta antes de colocar cualquier producto.<br>' +
+          '• Aplicamos anestesia tópica al 23% durante 20 minutos para que el tratamiento sea indoloro y confortable.<br><br>' +
+          '¿Deseas que coordinemos una cita para diseñar juntos tu armonización labial?<br>' +
+          "<a href='https://wa.me/573053862774?text=Hola%20Dra.%20Paola%20Pab%C3%B3n,%20quiero%20valoraci%C3%B3n%20para%20Labios%20Haute%20Couture' target='_blank' class='btn btn-gold' style='display:inline-block; padding:0.4rem 0.9rem; font-size:0.78rem; margin-top:0.4rem; text-decoration:none;'>Agendar Valoración Labial</a>";
+      }
+
+      // 8. DOLOR, ANESTESIA, AGUJAS
+      if (/dolor|duele|anestesia|aguja|agujas|molestia|inyecc|sentir/.test(lower)) {
+        return userNamePrefix + '¡puedes tener tranquilidad absoluta! Todos los procedimientos los ejecuta directamente la Dra. Paola Pabón con un protocolo de confort médico muy estricto:<br><br>' +
+          '1. Aplicamos <strong>anestesia tópica al 23% de alta potencia</strong> 20 minutos antes de comenzar.<br>' +
+          '2. Usamos <strong>micro-cánulas dérmicas de punta roma (22G/25G)</strong> que se deslizan entre los tejidos sin cortar vasos sanguíneos, lo que minimiza casi por completo cualquier molestia o hematoma.<br><br>' +
+          'Nuestras pacientes coinciden en que la experiencia en cabina es muy agradable y relajante. ¿Te gustaría agendar tu cita con total serenidad?<br>' +
+          "<a href='https://wa.me/573053862774?text=Hola%20Dra.%20Paola%20Pab%C3%B3n,%20deseo%20agendar%20mi%20cita%20de%20valoraci%C3%B3n' target='_blank' class='btn btn-gold' style='display:inline-block; padding:0.4rem 0.9rem; font-size:0.78rem; margin-top:0.4rem; text-decoration:none;'>Agendar Cita sin Dolor</a>";
+      }
+
+      // 9. EVENTOS PRÓXIMOS (BODA, FIESTA, GRADO, VIAJE)
+      if (/boda|matrimonio|fiesta|grado|viaje|evento|dias|días|semanas/.test(lower)) {
+        return userNamePrefix + '¡qué gran ocasión para consentirte! Si tienes un evento especial en puerta, la recomendación de la Dra. Paola depende del tiempo que tengamos:<br><br>' +
+          '• <strong>Si faltan menos de 7 días:</strong> Lo ideal es un protocolo sin tiempo de recuperación, como el <strong>Facial Médico Casmara con Biorrevitalización Celular NCTF 135HA</strong>. Aporta luminosidad inmediata (efecto glass skin) y tensa los poros sin dejar enrojecimiento.<br>' +
+          '• <strong>Si faltan más de 15 a 20 días:</strong> Podemos realizar Baby Botox o bioestimulación con Sculptra®, permitiendo que los resultados maduren y se asienten perfectamente.<br><br>' +
+          '¿Para qué fecha tienes previsto tu evento y qué zona te gustaría realzar?<br>' +
+          "<a href='https://wa.me/573053862774?text=Hola%20Dra.%20Paola%20Pab%C3%B3n,%20tengo%20un%20evento%20pr%C3%B3ximo%20y%20deseo%20asesor%C3%ADa' target='_blank' class='btn btn-gold' style='display:inline-block; padding:0.4rem 0.9rem; font-size:0.78rem; margin-top:0.4rem; text-decoration:none;'>Consultar para mi Evento</a>";
+      }
+
+      // 10. UBICACIÓN, SEDE Y HORARIOS EN YUMBO
+      if (/donde|dónde|ubicacion|ubicación|direccion|dirección|sede|yumbo|llegar|calle 5|puerto isaacs|horario/.test(lower)) {
+        return userNamePrefix + 'nuestra IPS está ubicada en la <strong>Calle 5 #7-24, Barrio Puerto Isaacs, en Yumbo (Valle del Cauca)</strong>, a pocas cuadras del Parque Belalcázar.<br><br>' +
+          '• <strong>Horarios:</strong> Lunes a Sábado en jornada continua, atendiendo bajo cita médica programada para brindarte absoluta exclusividad y privacidad.<br>' +
+          '• <strong>Contacto directo:</strong> WhatsApp oficial +57 305 386 2774.<br><br>' +
+          '¿Te gustaría agendar tu cita para esta semana en nuestra Sede Yumbo?<br>' +
+          "<a href='https://wa.me/573053862774?text=Hola%20Dra.%20Paola%20Pab%C3%B3n,%20deseo%20agendar%20mi%20cita%20en%20Sede%20Yumbo' target='_blank' class='btn btn-gold' style='display:inline-block; padding:0.4rem 0.9rem; font-size:0.78rem; margin-top:0.4rem; text-decoration:none;'>Agendar en Sede Yumbo</a>";
+      }
+
+      // 11. INFORMACIÓN SOBRE LA DOCTORA PAOLA
+      if (/doctora|dra|paola|pabón|pabon|experiencia|medica|médica|quien es|quién es|profesional/.test(lower)) {
+        return 'La <strong>Dra. Paola Andrea Pabón</strong> es médica estética con más de 10 años de experiencia clínica, graduada y certificada en procedimientos avanzados de armonización orofacial y rejuvenecimiento celular. En su consultorio en Yumbo aplica una medicina estética consciente y segura, guiada por la frase: <em>«No se trata de cambiarte, sino de armonizarte»</em>.<br><br>' +
+          'Cada valoración es pausada y personalizada, dedicando el tiempo necesario para escuchar tus deseos y diseñar un protocolo exclusivo para ti.<br><br>' +
+          '¿Deseas conocerla personalmente en una consulta de valoración médica?<br>' +
+          "<a href='https://wa.me/573053862774?text=Hola%20Dra.%20Paola%20Pab%C3%B3n,%20deseo%20una%20cita%20de%20valoraci%C3%B3n%20con%20usted' target='_blank' class='btn btn-gold' style='display:inline-block; padding:0.4rem 0.9rem; font-size:0.78rem; margin-top:0.4rem; text-decoration:none;'>Agendar con la Dra. Paola</a>";
+      }
+
+      // 12. SALUDO O INICIO DE CONVERSACIÓN
+      if (/hola|buenas|buenos dias|buenos días|buenas tardes|buenas noches|saludos|hey|alo|aló/.test(lower)) {
+        return '¡Hola ' + userNamePrefix + 'te doy la más cordial bienvenida a la IPS Dra. Paola Pabón en Yumbo! Soy <strong>AURA</strong>, tu asistente médica de confianza.<br><br>' +
+          'Estoy aquí para resolver con calidez médica cualquier inquietud sobre tu piel o nuestros procedimientos estrella: <strong>Sculptra®</strong> para recuperar colágeno y firmeza, <strong>Baby Botox</strong> para líneas de expresión sin congelar tu rostro, o diseño sutil de <strong>Labios Haute Couture</strong>.<br><br>' +
+          'Cuéntame, ¿qué aspecto de tu piel o rostro te gustaría cuidar o mejorar hoy?';
+      }
+
+      // 13. RESPUESTA DINÁMICA CONTEXTUAL POR DEFECTO
+      return userNamePrefix + 'te escucho con mucha atención 🤍. En la IPS Dra. Paola Pabón en Yumbo abordamos cada detalle de forma individualizada. Podemos asesorarte en bioestimulación de colágeno (Sculptra / Radiesse), rejuvenecimiento de líneas con Baby Botox, armonización labial o limpiezas profundas con cosmecéutica Casmara.<br><br>' +
+        '¿Deseas profundizar en algún tratamiento en particular o te gustaría que revisemos los cupos de la Dra. Paola para tu valoración médica presencial en cabina?<br><br>' +
+        "<a href='https://wa.me/573053862774?text=Hola%20Dra.%20Paola%20Pab%C3%B3n,%20" + encodeURIComponent((userContext.name ? 'soy ' + userContext.name + ' y ' : '') + 'deseo consultar sobre un tratamiento estético') + "' target='_blank' class='btn btn-gold' style='display:inline-block; padding:0.4rem 0.9rem; font-size:0.78rem; margin-top:0.4rem; text-decoration:none;'>Conversar por WhatsApp con Recepción</a>";
+    }
+
+    async function processMessage(userText) {
+      if (!userText || !userText.trim() || isProcessing) return;
+      userText = userText.trim();
+      isProcessing = true;
+
+      addMessage(userText, true);
+
+      const inputEl = document.getElementById('user-input');
+      if (inputEl) inputEl.value = '';
+
+      showTypingIndicator('AURA está redactando su respuesta médica...');
+
+      try {
+        // 1. Intento primario: Cloudflare Worker con IA real (Gemini 1.5 Flash / Vertex AI)
+        const realAiReply = await callCloudflareWorker(userText);
+        removeAllTypingIndicators();
+        addMessage(realAiReply, false);
+      } catch (workerErr) {
+        // 2. Si el Worker excede el tiempo o experimenta bloqueo de red, responde el motor conversacional inteligente
+        removeAllTypingIndicators();
+        const smartReply = generateConversationalClinicalResponse(userText);
+        addMessage(smartReply, false);
+      } finally {
+        isProcessing = false;
+        if (inputEl) inputEl.focus();
       }
     }
 
@@ -319,13 +484,12 @@
       const inp = document.getElementById('user-input');
       const val = inp.value.trim();
       if (!val) return;
-      inp.value = '';
       processMessage(val);
     }
 
     function handleKey(e) {
       if (e.key === 'Enter') handleSend();
     }
-  </script>
+</script>
 </body>
 </html>

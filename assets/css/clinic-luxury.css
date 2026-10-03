@@ -683,3 +683,74 @@ a {
   color: white;
   border-color: var(--color-primary);
 }
+
+
+/* ==========================================================================
+   ESTILOS DE IMPRESIÓN Y EXPORTACIÓN A PDF CLÍNICO
+   ========================================================================== */
+@media print {
+  @page {
+    size: letter portrait;
+    margin: 1.2cm;
+  }
+  body {
+    background: #ffffff !important;
+    color: #182224 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .top-bar, .header-nav, .section, .footer-luxury, .pdf-modal-close-btn, .pdf-modal-actions, .btn {
+    display: none !important;
+  }
+  #pdf-modal {
+    display: block !important;
+    position: static !important;
+    inset: auto !important;
+    background: #ffffff !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+  }
+  #pdf-modal-content {
+    background: #ffffff !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  .pdf-comparison-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1.25rem !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+  .pdf-img-col {
+    background: #ffffff !important;
+    border: 1px solid #D1C7B7 !important;
+    padding: 0.4rem !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+  .pdf-img-col img {
+    max-height: 230px !important;
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin: 0 auto !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+  table {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+}
