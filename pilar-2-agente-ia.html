@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/clinic-luxury.css">
+
+  <title>Pilar 2: Agente IA (Community & Citas) | IPS Paola Pabón x Bruiser Tech</title>
+</head>
+<body>
+  
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div>
+        <span>IPS PAOLA PABÓN • SEDE YUMBO: CALLE 5 #7-24, PUERTO ISAACS</span>
+      </div>
+      <div>
+        <span>Citas Privadas: <a href="https://wa.me/573053862774?text=Hola%20Dra.%20Paola%20Pabón,%20deseo%20solicitar%20una%20cita%20de%20valoración" target="_blank">+57 305 386 2774</a></span>
+      </div>
+    </div>
+  </div>
+
+  <header class="header-nav">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-wrapper">
+        <img src="assets/images/paola-pabon-solo-logo.png" alt="Dra. Paola Pabón">
+        <div class="brand-tagline">
+          <div>DRA. PAOLA PABÓN</div>
+          <div style="font-size: 0.65rem; color: var(--color-accent-gold); font-weight: 600;">MEDICINA ESTÉTICA & SPA</div>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="">1. Portal Web</a></li>
+          <li><a href="pilar-2-agente-ia.html" class="active">2. Agente IA (Community)</a></li>
+          <li><a href="pilar-3-espejo-ia.html" class="">3. Espejo de IA & PDF</a></li>
+          <li><a href="pilar-4-command-center.html" class="">4. Command Center</a></li>
+          <li><a href="propuesta-economica.html" class="btn btn-gold" style="padding: 0.5rem 1.25rem; font-size: 0.82rem;">Propuesta & Inversión</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  
+  <section class="section" style="padding: 4rem 0 2rem; background: var(--color-sand);">
+    <div class="container" style="text-align: center; max-width: 850px; margin: 0 auto;">
+      <span class="sub-badge">PILAR TECNOLÓGICO 2 • EN FASE DE DESARROLLO & ENTRENAMIENTO CLÍNICO</span>
+      <h1 style="font-size: clamp(2.2rem, 4vw, 3.4rem); margin-bottom: 1rem;">
+        Agente IA Omnicanal: <i>Community Manager & Triaje 24/7</i>
+      </h1>
+      <p style="font-size: 1.1rem;">
+        Entrenado con los servicios, protocolos y filosofía médica real de la Dra. Paola Pabón. Responde en segundos, califica pacientes de alto ticket y agenda según la disponibilidad de la clínica.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid-2">
+        <div>
+          <div style="background: rgba(197, 168, 128, 0.15); border: 1px solid var(--color-accent-gold); padding: 0.85rem 1.25rem; border-radius: var(--radius-md); margin-bottom: 2rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; font-weight: 700; color: #8A6E46; font-size: 0.85rem;">
+              <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#10B981;"></span>
+              ESTADO DEL SISTEMA: EN CALIBRACIÓN MÉDICA SUPERVISADA
+            </div>
+            <p style="font-size: 0.82rem; margin: 0.25rem 0 0; color: #6E532B;">
+              El modelo se afina con casos clínicos reales de la IPS para garantizar que nunca invente precios ni infrinja la ética médica.
+            </p>
+          </div>
+
+          <h2 style="font-size: 1.8rem; margin-bottom: 1rem;">Demostración Interactiva de Conversación</h2>
+          <p style="margin-bottom: 1.5rem; font-size: 0.95rem;">
+            Haz clic en uno de los 3 escenarios reales o escribe tu propia pregunta en el teléfono para ver cómo responde AURA con los datos de Paola Pabón:
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem;">
+            <button onclick="sendScenario('sculptra')" class="btn btn-outline" style="text-align: left; justify-content: flex-start; padding: 0.85rem 1.25rem; font-size: 0.85rem;">
+              💎 <strong>Escenario 1:</strong> Consultar Jornada de Sculptra® ($999.000 con regalo)
+            </button>
+            <button onclick="sendScenario('horarios')" class="btn btn-outline" style="text-align: left; justify-content: flex-start; padding: 0.85rem 1.25rem; font-size: 0.85rem;">
+              📅 <strong>Escenario 2:</strong> Disponibilidad de citas y ubicación en Yumbo
+            </button>
+            <button onclick="sendScenario('miedo')" class="btn btn-outline" style="text-align: left; justify-content: flex-start; padding: 0.85rem 1.25rem; font-size: 0.85rem;">
+              🌸 <strong>Escenario 3:</strong> Manejo de miedo al dolor o a quedar exagerada
+            </button>
+          </div>
+
+          <div style="background: var(--color-white); border: 1px solid var(--color-border-subtle); padding: 1.5rem; border-radius: var(--radius-md); box-shadow: var(--shadow-subtle);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+              <h4 style="font-size: 1rem; color: var(--color-primary); margin: 0;">Panel de Supervisión Humana</h4>
+              <button id="toggle-bot" onclick="toggleBot()" style="background: #10B981; color: white; border: none; padding: 0.35rem 0.85rem; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 700; cursor: pointer;">
+                IA ACTIVA (AUTO)
+              </button>
+            </div>
+            <p style="font-size: 0.82rem; margin: 0; color: var(--color-text-muted);">
+              La recepcionista puede pausar la IA con un clic para intervenir manualmente en conversaciones delicadas.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div class="phone-mockup">
+            <div class="phone-header">
+              <div style="width: 38px; height: 38px; border-radius: 50%; background: #00A884; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem;">
+                PP
+              </div>
+              <div style="flex: 1;">
+                <div style="font-weight: 600; font-size: 0.9rem;">AURA • IPS Paola Pabón</div>
+                <div style="font-size: 0.72rem; color: #8696A0;">En línea 24/7 (Sede Yumbo)</div>
+              </div>
+            </div>
+
+            <div id="chat-box" class="chat-window">
+              <div class="bubble bubble-bot">
+                ¡Hola! ✨ Te doy la bienvenida a la IPS Dra. Paola Pabón (Estética & Spa en Yumbo). ¿En qué podemos consentirte y armonizar tu piel hoy?
+              </div>
+            </div>
+
+            <div class="chat-input-bar">
+              <input id="user-input" type="text" placeholder="Escribe una pregunta o duda..." onkeypress="handleKey(event)">
+              <button onclick="handleSend()">➔</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <footer class="footer-luxury">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--color-white); margin-bottom: 0.75rem;">
+            Dra. Paola Pabón
+          </h3>
+          <p style="margin-bottom: 1.5rem; max-width: 320px;">
+            Medicina estética y armonización facial de alta precisión. Tratamientos médicos personalizados orientados a realzar tu belleza natural con total bioseguridad.
+          </p>
+          <div style="font-size: 0.82rem; color: var(--color-accent-gold);">
+            «No se trata de cambiarte, sino de armonizarte»
+          </div>
+        </div>
+
+        <div>
+          <h4>Los 4 Pilares</h4>
+          <ul>
+            <li><a href="index.html">1. Portal Web de Captación</a></li>
+            <li><a href="pilar-2-agente-ia.html">2. Agente IA (Community & Citas)</a></li>
+            <li><a href="pilar-3-espejo-ia.html">3. Espejo de IA & Plan PDF</a></li>
+            <li><a href="pilar-4-command-center.html">4. Command Center & Datos</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Procedimientos</h4>
+          <ul>
+            <li>Sculptra® Regeneración de Colágeno</li>
+            <li>Radiesse® Efecto Tensor CaHA</li>
+            <li>Toxina Botulínica & Baby Botox</li>
+            <li>Labios Haute Couture</li>
+            <li>Hilos Tensores PDO</li>
+            <li>Faciales Casmara & NCTF</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Sede & Contacto</h4>
+          <p>
+            Calle 5 #7-24, Barrio Puerto Isaacs<br>
+            Yumbo, Valle del Cauca, Colombia
+          </p>
+          <p style="margin-top: 0.75rem;">
+            <strong>WhatsApp VIP:</strong> <a href="https://wa.me/573053862774" style="color:var(--color-accent-gold);">+57 305 386 2774</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 IPS Paola Pabón. Todos los derechos reservados.
+        </div>
+        <div>
+          Arquitectura digital e infraestructura clínica inteligente por <a href="https://bruiser.tech" target="_blank" style="font-weight:700;">Bruiser Tech</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+  <script>
+    let isBotActive = true;
+    function toggleBot() {
+      isBotActive = !isBotActive;
+      const btn = document.getElementById('toggle-bot');
+      if (isBotActive) {
+        btn.innerText = "IA ACTIVA (AUTO)";
+        btn.style.background = "#10B981";
+      } else {
+        btn.innerText = "IA PAUSADA (HUMANO)";
+        btn.style.background = "#EF4444";
+      }
+    }
+    function addMessage(text, isUser) {
+      const box = document.getElementById('chat-box');
+      const b = document.createElement('div');
+      b.className = 'bubble ' + (isUser ? 'bubble-user' : 'bubble-bot');
+      b.innerText = text;
+      box.appendChild(b);
+      box.scrollTop = box.scrollHeight;
+    }
+    function sendScenario(type) {
+      if (type === 'sculptra') {
+        addMessage("Hola, vi una promoción de Sculptra, ¿cuánto cuesta y qué incluye?", true);
+        setTimeout(() => {
+          addMessage("¡Hola! 🌸 Te cuento: actualmente tenemos la Jornada Especial de Sculptra® (Ácido Poli-L-Láctico original de Galderma) a un valor de $999.000 COP por vial. Además, incluye de obsequio una sesión de Mesoterapia Biorevitalizante NCTF para darle luminosidad inmediata a tu piel. ¿Deseas que revisemos los cupos de esta semana con la Dra. Paola?", false);
+        }, 600);
+      } else if (type === 'horarios') {
+        addMessage("¿En dónde están ubicados en Yumbo y qué días atienden?", true);
+        setTimeout(() => {
+          addMessage("Estamos ubicados en la Calle 5 #7-24, Barrio Puerto Isaacs, en Yumbo (Valle del Cauca). Atendemos de Lunes a Sábado con cita previa para garantizarte una atención privada y sin esperas. ¿Te gustaría apartar tu valoración médica para esta semana?", false);
+        }, 600);
+      } else if (type === 'miedo') {
+        addMessage("Quiero hacerme labios pero me da miedo quedar con la boca muy inflada y falsa...", true);
+        setTimeout(() => {
+          addMessage("Es completamente comprensible tu inquietud 🤍. La filosofía médica de la Dra. Paola es precisamente «Armonizarte, no cambiarte». En labios aplicamos Ácido Hialurónico reticulado respetando las proporciones áureas de tu rostro, buscando hidratar y definir el contorno de forma imperceptible. Además, en tu valoración en cabina usamos el Espejo de IA para previsualizar el cambio antes de colocar la primera gota. ¿Te agendamos para que conozcas a la doctora?", false);
+        }, 600);
+      }
+    }
+    async function handleSend() {
+      const inp = document.getElementById('user-input');
+      const val = inp.value.trim();
+      if (!val) return;
+      addMessage(val, true);
+      inp.value = '';
+
+      const box = document.getElementById('chat-box');
+      const typingIndicator = document.createElement('div');
+      typingIndicator.className = 'bubble bubble-bot';
+      typingIndicator.id = 'typing-indicator';
+      typingIndicator.innerText = 'Consultando protocolos clínicos...';
+      box.appendChild(typingIndicator);
+      box.scrollTop = box.scrollHeight;
+
+      try {
+        const res = await fetch('https://paola-ai-proxy.bruiserapi.workers.dev', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: val })
+        });
+        const data = await res.json();
+        
+        const ind = document.getElementById('typing-indicator');
+        if (ind) ind.remove();
+
+        if (data.reply) {
+          addMessage(data.reply, false);
+        } else {
+          addMessage("Con gusto te orientamos con la Dra. Paola Pabón en nuestra Sede Yumbo. ¿Deseas agendar tu valoración esta semana?", false);
+        }
+      } catch (err) {
+        const ind = document.getElementById('typing-indicator');
+        if (ind) ind.remove();
+        addMessage("Con gusto te atendemos en la Sede Yumbo. También puedes escribirnos a nuestro WhatsApp oficial +57 305 386 2774.", false);
+      }
+    }
+    function handleKey(e) {
+      if (e.key === 'Enter') handleSend();
+    }
+  </script>
+
+</body>
+</html>
